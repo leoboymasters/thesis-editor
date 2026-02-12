@@ -1,4 +1,4 @@
-import { FileSystemItem } from './types';
+import { FileSystemItem } from '../types';
 
 export const INITIAL_FILES: Record<string, FileSystemItem> = {
   'root': {

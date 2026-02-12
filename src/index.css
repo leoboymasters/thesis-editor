@@ -1,0 +1,46 @@
+:root {
+  /* Light Mode: Clean White */
+  --bg-app: #ffffff;
+  --bg-panel: #f8fafc; /* Very light slate for sidebar */
+  --bg-surface: #eff6ff; /* Very light blueish tint for selection */
+  --fg-primary: #334155; /* Slate 700 */
+  --fg-secondary: #64748b; /* Slate 500 */
+  --border: #e2e8f0; /* Slate 200 */
+  --accent: #2959aa; /* Tokyo Night Blue for consistency */
+}
+
+.dark {
+  /* Tokyo Night Dark */
+  --bg-app: #1a1b26;
+  --bg-panel: #16161e;
+  --bg-surface: #292e42;
+  --fg-primary: #c0caf5;
+  --fg-secondary: #565f89;
+  --border: #292e42;
+  --accent: #7aa2f7;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* App-like feel */
+  background-color: var(--bg-app);
+  color: var(--fg-primary);
+}
+
+/* No theme transitions - Monaco doesn't support them, 
+   so instant switching ensures everything changes together */
+/* Custom scrollbar for file explorer */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: var(--fg-secondary);
+}

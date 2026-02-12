@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { EditorState, FileSystemItem } from '../types';
-import { INITIAL_FILES } from '../constants';
+import { INITIAL_FILES } from '@/data/constants';
 import { compileProject, clearCompilationCache, CompilationMode } from '../lib/compiler';
 
 interface ProjectStore extends EditorState {
