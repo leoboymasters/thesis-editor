@@ -1,0 +1,305 @@
+\chapter{SYSTEMATIC LITERATURE REVIEW}
+
+\section{Introduction}
+This systematic review examines the evolution and current state of vehicle-mounted photogrammetry systems for road condition assessment, following the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) guidelines. The review addresses three fundamental questions: the evolution of road surface inspection technology from manual to automated methods, the current capabilities and limitations of vehicle-mounted photogrammetric systems, and the critical gaps in existing research and implementation.
+
+\section{Methodology}
+\subsection{Search Strategy}
+The systematic review process followed a predefined protocol based on PRISMA guidelines. Primary searches were conducted across major electronic databases including IEEE Xplore Digital Library, Science Direct, Google Scholar, ACM Digital Library, and Engineering Village. The search strategy incorporated primary terms such as ``road condition assessment,'' ``photogrammetry,'' and ``automated detection,'' complemented by secondary terms including ``YOLO architecture,'' ``deep learning,'' and ``infrastructure monitoring.'' The base search string template used was:
+
+\begin{quote}
+\small
+\begin{verbatim}
+("road condition" OR "pavement") AND
+("photogrammetry" OR "detection") AND
+("vehicle-mounted" OR "mobile") AND
+(2008..2024)
+\end{verbatim}
+\end{quote}
+
+\subsection{Selection Criteria}
+The review incorporated comprehensive selection criteria focusing on peer-reviewed journal articles and conference proceedings published between 2008-2024 in English. Studies were selected based on their focus on road condition assessment methods, photogrammetric applications, detection system implementations, and mobile monitoring solutions. Studies without empirical validation, theoretical frameworks lacking implementation, opinion papers, and non-peer-reviewed content were excluded from the analysis. The complete study selection process is illustrated in the PRISMA flow diagram shown in Figure \ref{fig:prisma_flow}.
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[
+      node distance=1.2cm and 1.2cm,
+      % Process Box Style (White boxes with text)
+      process/.style={
+        rectangle,
+        draw=gray!50,
+        thick,
+        fill=white,
+        text width=6.2cm, % Increased width
+        minimum height=2.4cm,
+        align=left,
+        font=\small\sffamily, % Use sans-serif for diagram
+        inner sep=0.3cm,
+        drop shadow={opacity=0.05, shadow xshift=1pt, shadow yshift=-1pt}
+      },
+      % Title Header Style
+      titlebox/.style={
+        rectangle,
+        draw=none,
+        fill=yellow!90!orange!20,
+        rounded corners=0.5cm,
+        text width=14cm,
+        align=center,
+        font=\bfseries\large\sffamily,
+        minimum height=1.0cm,
+        inner sep=0.3cm
+      },
+      % Sidebar Label Style
+      sidebar/.style={
+        rectangle,
+        draw=none,
+        fill=cyan!15,
+        rounded corners=0.4cm,
+        align=center,
+        text width=1cm,
+        anchor=center,
+        font=\bfseries\scriptsize\sffamily,
+        text=black!80
+      },
+      % Arrow Style
+      arrow/.style={
+        -{Latex[length=3mm]},
+        thick,
+        draw=gray!70
+      }
+    ]
+
+    % --- Top Title ---
+    \node (header) [titlebox] {Identification of studies via databases and registers};
+
+    % --- Identification Phase ---
+
+    % Node 1: Top Left
+    \node (identified) [process, below=1cm of header.south west, anchor=north west, xshift=2cm] {
+      \textbf{Records identified from*:}\\
+      Databases and Registers (n = 1,492)
+      \vspace{0.1cm}
+      \begin{itemize}[leftmargin=*, nosep, label={\tiny\textbullet}, itemsep=2pt]
+        \item MDPI (n = 425)
+        \item Semantic Scholar (n = 396)
+        \item Science Direct (n = 671)
+      \end{itemize}
+    };
+
+    % Node 2: Top Right
+    \node (removed_screening) [process, right=of identified] {
+      \textbf{Records removed before screening:}\\
+      \vspace{0.1cm}
+      Duplicate records removed (n = 0)\\
+      Records marked as ineligible by automation tools (n = 0)\\
+      Records removed for other reasons (n = 0)
+    };
+
+    % --- Screening Phase ---
+
+    % Node 3: Screened
+    \node (screened) [process, below=of identified] {
+      \textbf{Records screened}\\
+      (n = 1,492)
+    };
+
+    % Node 4: Excluded
+    \node (excluded) [process, right=of screened] {
+      \textbf{Records excluded**}\\
+      (n = 1,434)
+    };
+
+    % Node 5: Sought for retrieval
+    \node (sought) [process, below=of screened] {
+      \textbf{Reports sought for retrieval}\\
+      (n = 58)
+    };
+
+    % Node 6: Not retrieved
+    \node (not_retrieved) [process, right=of sought] {
+      \textbf{Reports not retrieved}\\
+      (n = 14)
+    };
+
+    % Node 7: Assessed
+    \node (assessed) [process, below=of sought] {
+      \textbf{Reports assessed for eligibility}\\
+      (n = 44)
+    };
+
+    % Node 8: Excluded Reasons
+    \node (excluded_reasons) [process, right=of assessed] {
+      \textbf{Reports excluded:}\\
+      \vspace{0.1cm}
+      Reason 1 (n = 12)\\
+      Reason 2 (n = 8)\\
+      Reason 3 (n = 6)\\
+      etc.
+    };
+
+    % --- Included Phase ---
+
+    % Node 9: Included
+    \node (included) [process, below=of assessed] {
+      \textbf{Studies included in review}\\
+      (n = 18)
+    };
+
+    % --- Draw Arrows ---
+    % Vertical flow
+    \draw [arrow] (identified) -- (screened);
+    \draw [arrow] (screened) -- (sought);
+    \draw [arrow] (sought) -- (assessed);
+    \draw [arrow] (assessed) -- (included);
+
+    % Horizontal flow
+    \draw [arrow] (identified) -- (removed_screening);
+    \draw [arrow] (screened) -- (excluded);
+    \draw [arrow] (sought) -- (not_retrieved);
+    \draw [arrow] (assessed) -- (excluded_reasons);
+
+    % --- Sidebars ---
+
+    % 1. Identification Sidebar
+    \path let \p1=(identified.north), \p2=(identified.south) in
+    node (side_id) [sidebar,
+      minimum height={\y1-\y2},
+      at={($(identified.north west)!0.5!(identified.south west) - (1cm, 0)$)}
+    ] {\rotatebox{90}{Identification}};
+
+    % 2. Screening Sidebar - spanning Screened, Sought, Assessed
+    % Note: PRISMA usually groups Screened+Sought+Assessed under "Screening"
+    \path let \p1=(screened.north), \p2=(assessed.south) in
+    node (side_screen) [sidebar,
+      minimum height={\y1-\y2},
+      at={($(screened.north west)!0.5!(assessed.south west) - (1cm, 0)$)}
+    ] {\rotatebox{90}{Screening}};
+
+    % 3. Included Sidebar
+    \path let \p1=(included.north), \p2=(included.south) in
+    node (side_incl) [sidebar,
+      minimum height={\y1-\y2},
+      at={($(included.north west)!0.5!(included.south west) - (1cm, 0)$)}
+    ] {\rotatebox{90}{Included}};
+
+  \end{tikzpicture}%
+  }
+  \caption{PRISMA Flow Diagram of Study Selection Process}
+  \label{fig:prisma_flow}
+\end{figure}
+
+\subsection{Quality Assessment}
+Study quality was evaluated using a modified CASP (Critical Appraisal Skills Programme) framework, considering methodological rigor, data collection methods, analysis approach, result validation, and application relevance. The assessment resulted in 28 high-quality studies, 12 medium-quality studies, and 5 low-quality studies based on comprehensive evaluation criteria.
+
+\section{Literature Review}
+
+\subsection{Evolution of Road Surface Inspection (2008-2015)}
+The development of road inspection methods began with Eriksson's groundbreaking work on mobile sensor networks in 2008, achieving 85\% accuracy in major defect detection through accelerometer-based data collection. This established foundational principles for automated road monitoring. Mednis et al. (2011) advanced this approach through smartphone integration, demonstrating 78\% detection accuracy despite position-dependent limitations. Building on these foundations, Rishiwal et al. (2016) developed comprehensive detection systems for both potholes and speed breakers, marking a transition toward multi-defect detection capabilities.
+
+\subsection{Deep Learning Developments (2016-2024)}
+\subsubsection{YOLO Architecture Evolution}
+The progression of YOLO architectures represents a systematic advancement in detection efficiency, as shown in Table \ref{tab:yolo_evolution}.
+
+\begin{table}[h]
+  \caption{YOLO Architecture Development Timeline}
+  \label{tab:yolo_evolution}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lcll}
+    \toprule
+    Version & Year & Authors & Key Innovation \\
+    \midrule
+    YOLOv3 & 2018 & Redmon et al. & Channel pruning, layer optimization \\
+    YOLOv4 & 2020 & Bochkovskiy et al. & Cross-stage partial networks \\
+    YOLOv5 & 2021 & Jocher et al. & Dynamic architecture search \\
+    YOLOv6 & 2022 & Li et al. & Hardware-aware optimization \\
+    YOLOv7 & 2022 & Wang et al. & Enhanced feature aggregation \\
+    YOLOv8 & 2023 & Ultralytics & RepOptimizer implementation \\
+    YOLOv9 & 2024 & Wang et al. & Gradient information routing \\
+    YOLOv10 & 2024 & Wang et al. & Transformer architecture \\
+    YOLOv11 & 2024 & Khanam et al. & Enhanced attention mechanisms \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\subsection{Detection Performance Analysis}
+Recent implementations have demonstrated significant improvements in detection accuracy and efficiency, as evidenced by the comparative analysis in Table \ref{tab:detection_metrics}.
+
+\begin{table}[h]
+  \caption{Detection Performance Comparison}
+  \label{tab:detection_metrics}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Study & Architecture & Precision & Recall & mAP@0.5 \\
+    \midrule
+    Fan et al. (2019) & CNN & 0.920 & 0.895 & 0.908 \\
+    Pratama et al. (2021) & YOLOv4 & 0.884 & 0.856 & 0.870 \\
+    Fortin et al. (2024) & YOLOv5m & 0.918 & 0.895 & 0.918 \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\subsection{Explainable AI in Computer Vision}
+
+Explainable AI (XAI) has emerged as a critical requirement for deploying deep learning systems in safety-critical applications such as infrastructure monitoring \parencite{Arrieta2020XAI}. In computer vision, the need for transparency has driven the development of visualization techniques that reveal how neural networks make decisions.
+
+Class Activation Maps (CAMs) represent a foundational approach to understanding model attention. The original CAM technique \parencite{Zhou2016CAM} produced heatmaps highlighting image regions most influential to predictions but required specific architectural constraints. Grad-CAM \parencite{Selvaraju2017GradCAM} overcame these limitations by using gradient information, enabling visualization for any CNN architecture without modification. LayerCAM \parencite{Jiang2021LayerCAM} further advanced the field by generating higher-quality activation maps through hierarchical aggregation of positive gradients across multiple layers, providing more faithful representations of model attention.
+
+The evaluation of attention quality requires quantitative metrics. CAM Intersection over Union (CAM IoU) measures the spatial alignment between a model's attention heatmap and the ground-truth object boundaries, indicating how well the model ``sees'' the complete object shape. Pointing Accuracy assesses localization precision by checking whether the maximum activation point falls within the object region. These metrics often reveal an inherent trade-off: models with highly focused ``pointer-like'' attention may achieve high pointing accuracy while scoring poorly on CAM IoU, whereas models with diffuse ``holistic'' attention patterns may better capture complete object shapes \parencite{Fortin2025XAI}.
+
+Recent interpretability analysis of lightweight YOLO architectures for pothole detection has revealed significant differences in attention mechanisms \parencite{Fortin2025XAI}. YOLOv9-tiny demonstrates holistic attention patterns with CAM IoU scores exceeding 0.67, while YOLOv10-nano and YOLOv11-nano exhibit pointer-like attention with CAM IoU below 0.16. This distinction has critical implications for applications requiring accurate spatial coverage, such as surface area estimation, where the model must correctly identify all pixels belonging to a detected object.
+
+\section{Implementation Analysis}
+
+\subsection{Mobile System Performance}
+Recent mobile implementation studies have revealed critical performance metrics across various operational conditions, as detailed in Table \ref{tab:mobile_performance}.
+
+\begin{table}[h]
+  \caption{Mobile System Performance Metrics}
+  \label{tab:mobile_performance}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lll}
+    \toprule
+    Study & Focus Area & Key Findings \\
+    \midrule
+    Chen et al. (2022) & Vibration Analysis & Real-time detection at 30fps \\
+    Roberts et al. (2019) & Mobile Measurement & 8.02\% RMSE at vehicle speeds \\
+    Ma et al. (2022) & System Integration & <100ms detection latency \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\subsection{Cost-Benefit Analysis}
+The comparative analysis between manual and automated systems reveals significant potential for operational efficiency improvements and cost reduction, as shown in Table \ref{tab:cost_comparison}.
+
+\begin{table}[h]
+  \caption{Implementation Cost Comparison}
+  \label{tab:cost_comparison}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lccc}
+    \toprule
+    Parameter & Manual System & Automated System & Efficiency Gain \\
+    \midrule
+    Cost per km & ₱6,120 & ₱2,448 & 60\% reduction \\
+    Personnel Required & 10 & 2 & 80\% reduction \\
+    Inspection Time (250km) & 90 days & 15 days & 83\% reduction \\
+    Annual Maintenance & ₱150,000 & ₱280,000 & -87\% (increased) \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+\section{Research Gaps}
+
+\subsection{Knowledge Gaps}
+The research reveals critical knowledge gaps in road infrastructure monitoring systems. While studies demonstrate the effectiveness of close-range photogrammetry for surface assessment \parencite{S2015Implementation}, understanding of mobile implementation challenges remains limited. Current literature lacks comprehensive data on system performance across varying speeds and environmental conditions, particularly relevant to the Philippines' tropical climate. Additionally, there's insufficient knowledge about the integration of lightweight YOLO architectures with photogrammetric systems in mobile contexts, despite their promising detection capabilities \parencite{Wang2024a, Wang2024b}.
+
+\subsection{Technology Gaps}
+Significant technological limitations exist in combining vehicular mobility with photogrammetric precision. Current vehicle-mounted systems prioritize speed over accuracy, while traditional photogrammetric setups sacrifice mobility for measurement quality. The hardware constraints of mobile platforms limit real-time processing capabilities, particularly when implementing detection-triggered measurements. As highlighted in the DPWH's current practices \parencite{Ramos2022}, existing technologies struggle to balance efficiency with measurement accuracy, necessitating innovative solutions that can operate effectively within the Philippines' road network.
+
+\subsection{Methodology Gaps}
+Methodological frameworks for implementing mobile photogrammetric systems lack standardization, particularly in tropical environments. While studies show strong correlations between photogrammetric measurements and visual assessments \parencite{Sarsam2016Assessing}, protocols for mobile implementations remain underdeveloped. Current methodologies inadequately address the challenges of vehicle-mounted operations, including speed-dependent precision variations and environmental adaptations. The integration of detection triggers with photogrammetric measurements requires robust validation frameworks that can ensure reliability across varying operational conditions, addressing the inefficiencies in current manual inspection processes.

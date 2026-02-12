@@ -1,0 +1,153 @@
+\chapter{INITIAL RESULTS AND DISCUSSION}
+
+This chapter presents the results and analysis of the Eyeway system development and evaluation, organized according to the CRISP-DM framework phases. Each section details the outcomes and insights gained during the respective phases of the project.
+
+\section{Business Understanding Results}
+
+Analysis of current road inspection practices in the Philippines revealed significant operational inefficiencies and resource requirements. Through extensive consultation with the Department of Public Works and Highways (DPWH), we gathered quantitative insights into the existing manual assessment process. The current process metrics, as shown in Table \ref{tab:manual_parameters}, demonstrate the substantial resource investment required for traditional inspection methods.
+
+\begin{table}[htbp]
+\caption{Manual Assessment Process Analysis}
+\label{tab:manual_parameters}
+\begin{tabularx}{\textwidth}{X r}
+\toprule
+Parameter & Value \\ 
+\midrule
+Daily Labor Cost & Php 1,700 \\
+Number of Surveyors & 10 \\
+Survey Duration & 90 days \\
+Survey Length & 250 km \\
+Total Cost per km & Php 6,120 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The requirements analysis phase identified crucial technical specifications for both hardware and software components. Hardware requirements encompassed comprehensive specifications for the camera system to ensure photogrammetric accuracy, integration parameters for GPS modules, detailed vehicle mounting specifications, and edge computing resource requirements. On the software side, the analysis established detection system performance targets, real-time processing thresholds, cloud infrastructure specifications, and data management requirements necessary for system operation.
+
+\section{Data Understanding Results}
+
+The research utilized a comprehensive dataset comprising 16,054 pothole images, strategically divided to support robust model development and evaluation. The dataset distribution allocated 12,843 images (80\%) for training, 1,606 images (10\%) for validation, and 1,605 images (10\%) for testing. This distribution ensured sufficient data for model training while maintaining independent sets for validation and final testing.
+
+Quality assessment of the dataset revealed robust representation across various environmental conditions, lighting variations, and capture angles. The diversity in image characteristics provided a strong foundation for developing a resilient detection system capable of operating under real-world conditions.
+
+\section{Data Preparation Results}
+
+The image preprocessing phase implemented a standardization protocol that successfully transformed all images to a uniform 320×320 pixel resolution while maintaining aspect ratios through calculated padding. This standardization ensured consistent input dimensions for the neural network while preserving original image proportions. The process included RGB format normalization and pixel value scaling to the [0,1] range, preparing the images for efficient neural network processing.
+
+Annotation implementation followed the YOLO format specifications, incorporating normalized center coordinates (x, y) and standardized dimension specifications for single-class pothole detection. This standardization ensured compatibility with the chosen architecture while maintaining annotation accuracy.
+
+\section{Modeling Results}
+The training process evaluated three YOLO variants under controlled conditions, as detailed in Table \ref{tab:training_config}. The implementation maintained consistent parameters across all variants to ensure comparable results.
+
+\begin{table}[htbp]
+\caption{Model Training Configuration Results}
+\label{tab:training_config}
+\begin{tabularx}{\textwidth}{X l l}
+\toprule
+Parameter & Value & Description \\ 
+\midrule
+Epochs Completed & 750 & Maximum training iterations \\
+Batch Size Used & 16 & Images per training step \\
+Base Learning Rate & 1e-3 & Initial learning rate \\
+Input Resolution & 320×320 & Network input size \\
+IoU Threshold & 0.5 & For positive detection \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Performance evaluation revealed distinct characteristics across the three model variants. The confusion matrix analysis, detailed in Table \ref{tab:confusion}, demonstrates significant variations in detection capabilities. YOLOv9 achieved superior detection accuracy with 6,485 true positives and minimal false positives, while YOLOv10 showed reduced reliability with increased false positives and miss rates. YOLOv11 demonstrated intermediate performance, approaching but not matching YOLOv9's benchmark metrics.
+
+\begin{table}[htbp]
+\caption{Confusion Matrix Analysis Results}
+\label{tab:confusion}
+\begin{tabularx}{\textwidth}{X l l l}
+\toprule
+Metric & YOLOv9 & YOLOv10 & YOLOv11 \\ 
+\midrule
+True Positives & 6,485 & 6,106 & 6,379 \\
+False Positives & 745 & 1,147 & 816 \\
+False Negatives & 1,278 & 1,657 & 1,384 \\
+Precision Rate (\%) & 89.7 & 84.2 & 88.6 \\
+Miss Rate (\%) & 16.5 & 21.3 & 17.8 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+These detection metrics align with the overall performance indicators shown in Table \ref{tab:performance}. YOLOv9 maintained superior precision (0.90807) and mAP@0.5 (0.88365), while exhibiting the lowest box loss (1.00696). YOLOv11 achieved marginally better recall (0.82107) with competitive precision (0.90713), suggesting effective balance between detection accuracy and false alarm rates. YOLOv10, despite showing lower overall metrics, demonstrated the capability to complete training in fewer epochs, though with higher computational demands per epoch.
+
+\begin{table}[htbp]
+\caption{Final Performance Metrics Comparison}
+\label{tab:performance}
+\begin{tabularx}{\textwidth}{X l l l}
+\toprule
+Metric & YOLOv9 & YOLOv10 & YOLOv11 \\ 
+\midrule
+Precision & 0.90807 & 0.88353 & 0.90713 \\
+Recall & 0.81686 & 0.80817 & 0.82107 \\
+mAP@0.5 & 0.88365 & 0.84483 & 0.86888 \\
+Box Loss & 1.00696 & 1.14732 & 1.06211 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The combined analysis of confusion matrices and performance metrics indicates that YOLOv9 establishes the benchmark for detection reliability, while YOLOv11 offers a balanced alternative with competitive accuracy. YOLOv10, despite showing lower absolute performance, presents potential advantages in deployment scenarios where training time is prioritized over maximum precision.
+
+\section{Explainability Analysis Results}
+
+While detection accuracy metrics provide essential performance indicators, they do not reveal how models perceive and localize potholes. This section presents the results of the LayerCAM interpretability analysis conducted to inform model selection for surface area estimation.
+
+\subsection{Qualitative Attention Analysis}
+
+LayerCAM visualization revealed systematic differences in attention strategies across the three YOLO architectures. YOLOv9-tiny exhibits a holistic attention pattern characterized by broad, diffuse activations that cover the full spatial extent of potholes and their immediate context. This attention distribution suggests reliance on surface texture and contextual cues to identify defects.
+
+In contrast, YOLOv10-nano and YOLOv11-nano demonstrate pointer-like attention strategies. Their heatmaps concentrate into sharp, localized hotspots that emphasize discriminative subregions such as sharp edges or deep shadows. While computationally efficient, this approach sacrifices holistic coverage of the object boundaries.
+
+Figure \ref{fig:layercam_comparison} presents the LayerCAM visualization results comparing attention patterns across the three YOLO architectures.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{explainable.png}
+  \caption{LayerCAM attention visualization comparing YOLOv9-tiny, YOLOv10-nano, and YOLOv11-nano. YOLOv9-tiny demonstrates holistic attention covering the full pothole extent, while YOLOv10-nano and YOLOv11-nano exhibit pointer-like attention focused on discriminative subregions.}
+  \label{fig:layercam_comparison}
+\end{figure}
+
+\subsection{Quantitative Interpretability Metrics}
+
+The interpretability metrics in Table \ref{tab:interpretability} quantify the observed attention differences.
+
+\begin{table}[htbp]
+\caption{Interpretability Metrics Comparison}
+\label{tab:interpretability}
+\begin{tabularx}{\textwidth}{X l l l}
+\toprule
+Metric & YOLOv9-tiny & YOLOv10-nano & YOLOv11-nano \\ 
+\midrule
+CAM IoU & \textbf{0.674} & 0.160 & 0.082 \\
+Pointing Accuracy & 0.670 & \textbf{0.814} & 0.787 \\
+Energy Ratio & 0.934 & \textbf{0.936} & 0.932 \\
+Attention Strategy & Holistic & Pointer-like & Pointer-like \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+YOLOv9-tiny achieves a mean CAM IoU of 0.674, over four times higher than YOLOv10-nano (0.160) and eight times higher than YOLOv11-nano (0.082). This metric confirms that YOLOv9-tiny's attention faithfully aligns with pothole boundaries, capturing the complete object shape.
+
+YOLOv10-nano leads in pointing accuracy (0.814), followed by YOLOv11-nano (0.787) and YOLOv9-tiny (0.670). This indicates that while newer models excel at localizing discriminative features, they fail to capture the full object form.
+
+All models achieve comparable energy ratios ($\approx$ 0.93), demonstrating consistent focus on the object region rather than background noise.
+
+\subsection{Implications for Surface Area Estimation}
+
+The interpretability trade-off has direct implications for Eyeway 2.0's damage quantification capability. The surface area calculation (Equation \ref{eq:surface_area}) sums depth values across all pixels within the detected pothole region. If the detection model's attention concentrates on discriminative subregions rather than the complete defect boundary, the Region of Interest (ROI) used for depth integration may underestimate the true pothole extent.
+
+YOLOv9-tiny's holistic attention ensures that the detection encompasses the full pothole boundary, enabling accurate surface area estimation. Conversely, the pointer-like attention of YOLOv10-nano and YOLOv11-nano may provide precise localization for anomaly flagging but risks underestimating surface area due to incomplete spatial coverage.
+
+Based on this analysis, YOLOv9-tiny was selected for deployment in Eyeway 2.0, prioritizing interpretability requirements essential for quantitative damage assessment over the marginal pointing accuracy improvements offered by newer architectures.
+
+\section{System Evaluation Results}
+
+\textit{This section will present the results of the integrated system evaluation, including processing speed, detection latency, GPS integration accuracy, and surface area estimation accuracy. Results are pending completion of field testing.}
+
+\section{Deployment Results}
+
+\textit{This section will document the field deployment validation results, including system performance across varying environmental conditions and vehicle speeds. Results are pending completion of deployment testing.}

@@ -1,0 +1,1547 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/apasortcite//global/global/global}
+    \entry{AAA2021}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b8d2550c8710b0c0c743236cd9ba87b9}{%
+           family={{American Automobile Association}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{fullhash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{fullhashraw}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{bibnamehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authorbibnamehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authornamehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authorfullhash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authorfullhashraw}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://newsroom.aaa.com/2022/02/pothole-damage-costs-u-s-drivers-3-billion-annually/}}
+      \field{note}{AAA survey reports \$26.5 billion in vehicle repair costs due to pothole damage in 2021}
+      \field{title}{Pothole Damage Costs U.S. Drivers \$3 Billion Annually}
+      \field{year}{2021}
+    \endentry
+    \entry{Arrieta2020XAI}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=94bf5c37ae25e1a4f902c67f8af0647b}{%
+           family={Arrieta},
+           familyi={A\bibinitperiod},
+           given={Alejandro\bibnamedelima Barredo},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f2f49e7916926b46a6555cf86c18c919}{%
+           family={Díaz-Rodríguez},
+           familyi={D\bibinithyphendelim R\bibinitperiod},
+           given={Natalia},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cad385a9bc804164f8a02ca66c24913e}{%
+           family={Del\bibnamedelima Ser},
+           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=eee76618bbe2267980002ac15fc73c9b}{%
+           family={Bennetot},
+           familyi={B\bibinitperiod},
+           given={Adrien},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5d79f34727bcbbd23065a0c111485c1b}{%
+           family={Tabik},
+           familyi={T\bibinitperiod},
+           given={Siham},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=43d5191cbb4190664e6dad9d9b27505e}{%
+           family={Barbado},
+           familyi={B\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1691f3ff4356c12149ac4f858ead7e04}{%
+           family={García},
+           familyi={G\bibinitperiod},
+           given={Salvador},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fca9608c0877fec28cda4245d80fad9d}{%
+           family={Gil-López},
+           familyi={G\bibinithyphendelim L\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=381bf37312a71cebeee50fc633f67c46}{%
+           family={Molina},
+           familyi={M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4ff51a3504ff841d75fa3640a2842bff}{%
+           family={Benjamins},
+           familyi={B\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8d645501efd3b19a683a4e9347e9604c}
+      \strng{fullhash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{fullhashraw}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{bibnamehash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{authorbibnamehash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{authornamehash}{8d645501efd3b19a683a4e9347e9604c}
+      \strng{authorfullhash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{authorfullhashraw}{f47fbe35649a7b2c8a65c95f4389af91}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Fusion}
+      \field{title}{Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI}
+      \field{volume}{58}
+      \field{year}{2020}
+      \field{pages}{82\bibrangedash 115}
+      \range{pages}{34}
+    \endentry
+    \entry{Arya2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=a586b53847bbfe8e1c0b9a659c7fd6aa}{%
+           family={Arya},
+           familyi={A\bibinitperiod},
+           given={Deeksha},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=684f04e6fa68cbf46757a8fc26aeeef6}{%
+           family={Maeda},
+           familyi={M\bibinitperiod},
+           given={Hiroya},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0a8428ff9ac75152597d3615f2c07bc2}{%
+           family={Ghosh},
+           familyi={G\bibinitperiod},
+           given={Sanjay\bibnamedelima Kumar},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7cbaaefb934a5d7a9938138ef5826e2d}{%
+           family={Toshniwal},
+           familyi={T\bibinitperiod},
+           given={Durga},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e46b6eac04d8ab6790a4ebd2ade4d320}{%
+           family={Sekimoto},
+           familyi={S\bibinitperiod},
+           given={Yoshihide},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{3dca9fe9721746cec6e34f725f08af33}
+      \strng{fullhash}{6c72083602b9925121823b1cea3e187d}
+      \strng{fullhashraw}{6c72083602b9925121823b1cea3e187d}
+      \strng{bibnamehash}{6c72083602b9925121823b1cea3e187d}
+      \strng{authorbibnamehash}{6c72083602b9925121823b1cea3e187d}
+      \strng{authornamehash}{3dca9fe9721746cec6e34f725f08af33}
+      \strng{authorfullhash}{6c72083602b9925121823b1cea3e187d}
+      \strng{authorfullhashraw}{6c72083602b9925121823b1cea3e187d}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automation in Construction}
+      \field{title}{Deep Learning-Based Road Damage Detection and Classification for Multiple Countries}
+      \field{volume}{132}
+      \field{year}{2021}
+      \field{pages}{103935}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.autcon.2021.103935
+      \endverb
+    \endentry
+    \entry{ADB2012}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=92d83ccd39e6a187466ef617c8cb8662}{%
+           family={{Asian Development Bank}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{fullhash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{fullhashraw}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{bibnamehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authorbibnamehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authornamehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authorfullhash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authorfullhashraw}{92d83ccd39e6a187466ef617c8cb8662}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Philippines: Transport Sector Assessment, Strategy, and Road Map}
+      \field{year}{2012}
+    \endentry
+    \entry{Burningham2005}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d7e92dc3cfd67dab0d0c81558361ba62}{%
+           family={Burningham},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8fde0566d60ce4b81588556d9ce2d121}{%
+           family={Stankevich},
+           familyi={S\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{fullhash}{d59e00bde6256b1b24379d691de96017}
+      \strng{fullhashraw}{d59e00bde6256b1b24379d691de96017}
+      \strng{bibnamehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authorbibnamehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authornamehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authorfullhash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authorfullhashraw}{d59e00bde6256b1b24379d691de96017}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Why road maintenance is important and how to get it done}
+      \field{year}{2005}
+    \endentry
+    \entry{Fortin2025XAI}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9cf63495f41b2f952a685b68509c481c}{%
+           family={Fortin},
+           familyi={F\bibinitperiod},
+           given={Leonhel\bibnamedelima V.},
+           giveni={L\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a04388332f07793a00f8bfe7e92a5e96}{%
+           family={Llantos},
+           familyi={L\bibinitperiod},
+           given={Orven\bibnamedelima E.},
+           giveni={O\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{fullhash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{fullhashraw}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{bibnamehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authorbibnamehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authornamehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authorfullhash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authorfullhashraw}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the International Conference}
+      \field{note}{Under review}
+      \field{title}{Explainable AI for Pothole Detection: Comparing YOLOv9-tiny, YOLOv10-nano, and YOLOv11-nano through LayerCAM Visualization}
+      \field{year}{2025}
+    \endentry
+    \entry{Jiang2021LayerCAM}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=efb65a2da63fe51c171a4f98dc6d558f}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Peng-Tao},
+           giveni={P\bibinithyphendelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d3c32927de358f1707c93459d77854ac}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Chang-Bin},
+           giveni={C\bibinithyphendelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f2d105116f208ed641dc9126d8209ee4}{%
+           family={Hou},
+           familyi={H\bibinitperiod},
+           given={Qibin},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bfbe355b6a8257baeffd5b8814bc5c57}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Ming-Ming},
+           giveni={M\bibinithyphendelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c600a8d986504b864d4994f2eed6156f}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Yunchao},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{819d4979a79d518dd1cae6ea338d0718}
+      \strng{fullhash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{fullhashraw}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{bibnamehash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{authorbibnamehash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{authornamehash}{819d4979a79d518dd1cae6ea338d0718}
+      \strng{authorfullhash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{authorfullhashraw}{10b63a781c8b171db6b4d0ddee07a50a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Image Processing}
+      \field{title}{LayerCAM: Exploring Hierarchical Class Activation Maps for Localization}
+      \field{volume}{30}
+      \field{year}{2021}
+      \field{pages}{5875\bibrangedash 5888}
+      \range{pages}{14}
+    \endentry
+    \entry{Koch2015}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eed6206739474089fbacb8e0b3c4fc9f}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6cff529158895304c8421fa283dde269}
+      \strng{fullhash}{6cff529158895304c8421fa283dde269}
+      \strng{fullhashraw}{6cff529158895304c8421fa283dde269}
+      \strng{bibnamehash}{6cff529158895304c8421fa283dde269}
+      \strng{authorbibnamehash}{6cff529158895304c8421fa283dde269}
+      \strng{authornamehash}{6cff529158895304c8421fa283dde269}
+      \strng{authorfullhash}{6cff529158895304c8421fa283dde269}
+      \strng{authorfullhashraw}{6cff529158895304c8421fa283dde269}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advanced Engineering Informatics}
+      \field{number}{2}
+      \field{title}{A review on computer vision based defect detection and condition assessment of concrete and asphalt civil infrastructure}
+      \field{volume}{29}
+      \field{year}{2015}
+      \field{pages}{196\bibrangedash 210}
+      \range{pages}{15}
+    \endentry
+    \entry{Majidifard2020}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=8cc21bf85ec006bf4203aabe600e1d29}{%
+           family={Majidifard},
+           familyi={M\bibinitperiod},
+           given={Hamed},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=37029ac4efb98995e99713f92d9dc8a3}{%
+           family={Jin},
+           familyi={J\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6665611d4b37449b2daaccad1e40f75e}{%
+           family={Adu-Gyamfi},
+           familyi={A\bibinithyphendelim G\bibinitperiod},
+           given={Yaw},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b2eff27afa5c00dab21dafbf1a62feb1}{%
+           family={Buttlar},
+           familyi={B\bibinitperiod},
+           given={William\bibnamedelima G.},
+           giveni={W\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications}%
+      }
+      \strng{namehash}{9bdb83c5f5624b6f9833eaff6ab46b7a}
+      \strng{fullhash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{fullhashraw}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{bibnamehash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{authorbibnamehash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{authornamehash}{9bdb83c5f5624b6f9833eaff6ab46b7a}
+      \strng{authorfullhash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{authorfullhashraw}{d2c06db72a0033674f86ed8c13cb100f}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transportation Research Record}
+      \field{number}{2}
+      \field{title}{Pavement Image Datasets: A New Benchmark Dataset to Classify and Densify Pavement Distresses}
+      \field{volume}{2674}
+      \field{year}{2020}
+      \field{pages}{328\bibrangedash 339}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1177/0361198120907283
+      \endverb
+    \endentry
+    \entry{Ramos2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=be98c79fc9736aa6c12356a6c56f9766}{%
+           family={Ramos},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi A.\bibnamedelimi B.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bdce9fd2ef42bb0d127fcadf4b888cfb}{%
+           family={Ambrocio},
+           familyi={A\bibinitperiod},
+           given={L.\bibnamedelimi B.},
+           giveni={L\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e660ce7a08c4b3c2f351456529906fd8}{%
+           family={Dacanay},
+           familyi={D\bibinitperiod},
+           given={J.\bibnamedelimi P.\bibnamedelimi T.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f57d74570e40f150bf0facba563d02b1}
+      \strng{fullhash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{fullhashraw}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{bibnamehash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{authorbibnamehash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{authornamehash}{f57d74570e40f150bf0facba563d02b1}
+      \strng{authorfullhash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{authorfullhashraw}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A review of the current practices in the pavement surface monitoring in the Philippines}
+      \field{year}{2022}
+    \endentry
+    \entry{S2015Implementation}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=3490c1ed6afc64ca5f520a731cee73fc}{%
+           family={S.},
+           familyi={S\bibinitperiod},
+           given={Sarsam},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1ddef220da6143ab9dbcad3f30c4a2c3}{%
+           family={A.},
+           familyi={A\bibinitperiod},
+           given={Daham},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bfe0265c7f7739c6c4b4c583dc7f5ffe}{%
+           family={A.},
+           familyi={A\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{58e4c4d8f6eb32bbb5101429dce66da5}
+      \strng{fullhash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{fullhashraw}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{bibnamehash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{authorbibnamehash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{authornamehash}{58e4c4d8f6eb32bbb5101429dce66da5}
+      \strng{authorfullhash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{authorfullhashraw}{c83ad546712948102d1ead3b7ab80d4c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Implementation of {Close} {Range} {Photogrammetry} to {Evaluate} {Distresses} at {Asphalt} {Pavement} {Surface}}
+      \field{year}{2015}
+    \endentry
+    \entry{Sarsam2016Assessing}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b07a6dbe14ab623e18043cd6f89fe2ab}{%
+           family={Sarsam},
+           familyi={S\bibinitperiod},
+           given={Saad\bibnamedelima I.},
+           giveni={S\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f647ae3ceb89a09318a15d6f451c7a4}{%
+           family={Daham},
+           familyi={D\bibinitperiod},
+           given={Afrah\bibnamedelima Mekki},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=80228230886427873569eff11f6cbee7}{%
+           family={Ali},
+           familyi={A\bibinitperiod},
+           given={Amal\bibnamedelima Mahdi},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Journal of Engineering}%
+      }
+      \strng{namehash}{8822e98cf347798dd68e8005d92137e0}
+      \strng{fullhash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{fullhashraw}{f1315855cdbd7bf984644a220010ef08}
+      \strng{bibnamehash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{authorbibnamehash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{authornamehash}{8822e98cf347798dd68e8005d92137e0}
+      \strng{authorfullhash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{authorfullhashraw}{f1315855cdbd7bf984644a220010ef08}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Engineering}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Assessing {Close} {Range} {Photogrammetric} {Approach} to {Evaluate} {Pavement} {Surface} {Condition}}
+      \field{volume}{22}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 14}
+      \range{pages}{14}
+    \endentry
+    \entry{Selvaraju2017GradCAM}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=2bb65ae1ae492d8a5f0410b495e608cf}{%
+           family={Selvaraju},
+           familyi={S\bibinitperiod},
+           given={Ramprasaath\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=615d55ccf6f32ec74ad65001e3a4ebbb}{%
+           family={Cogswell},
+           familyi={C\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95fdc805087b8b7c1bb60f09d4ee2641}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Abhishek},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=485265d172ca1779fa9691a5b6091cc8}{%
+           family={Vedantam},
+           familyi={V\bibinitperiod},
+           given={Ramakrishna},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0ab7a4601951a0c59352f1dcb531afb}{%
+           family={Parikh},
+           familyi={P\bibinitperiod},
+           given={Devi},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0a408119272ca1bd49b625e3b927d05}{%
+           family={Batra},
+           familyi={B\bibinitperiod},
+           given={Dhruv},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{44b36a9d8aed667d91631e9717a56509}
+      \strng{fullhash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{fullhashraw}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{bibnamehash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{authorbibnamehash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{authornamehash}{44b36a9d8aed667d91631e9717a56509}
+      \strng{authorfullhash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{authorfullhashraw}{aa15df90de6a99f6dc73b935fda62089}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE International Conference on Computer Vision}
+      \field{title}{Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization}
+      \field{year}{2017}
+      \field{pages}{618\bibrangedash 626}
+      \range{pages}{9}
+    \endentry
+    \entry{Wang2024b}{article}{}{}
+      \name{author}{7}{}{%
+        {{un=1,uniquepart=given,hash=a1017411e004825d4076c9a952b8b749}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=83702ad2b0cc9ef7ee381daa5f80b7f0}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=764caa9b1ba77be7a568d5390279a255}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bbd76d99dff4497fda6976a4f0146e4f}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b07e08d389bfad6c22931b7cb072ed36}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7fc1f626087edf07f8df670944037429}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3032dbcb09a455daab564234f2f68676}{%
+           family={Ding},
+           familyi={D\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{efba64248e10d873acbbca8bd320b966}
+      \strng{fullhash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{fullhashraw}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{bibnamehash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{authorbibnamehash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{authornamehash}{efba64248e10d873acbbca8bd320b966}
+      \strng{authorfullhash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{authorfullhashraw}{93ab764c2587cabed0102fe29728ddf8}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{YOLOv10: Real-Time End-to-End Object Detection}
+      \field{volume}{abs/2405.14458}
+      \field{year}{2024}
+    \endentry
+    \entry{Wang2024a}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=1,uniquepart=given,hash=8e89dcb803fceedaac3459e5e9a191d8}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={C.-Y.},
+           giveni={C\bibinithyphendelim Y\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=c078b4438f373647c60f4c6198d1e50c}{%
+           family={Yeh},
+           familyi={Y\bibinitperiod},
+           given={I.-H.},
+           giveni={I\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8009eb32a1168c24b607faa34283c76b}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={H.-Y.\bibnamedelimi M.},
+           giveni={H\bibinithyphendelim Y\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{696dc57a62d2bd908b64212c0b1b9a77}
+      \strng{fullhash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{fullhashraw}{222707b046afbbd45f4022a8fe290c11}
+      \strng{bibnamehash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{authorbibnamehash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{authornamehash}{696dc57a62d2bd908b64212c0b1b9a77}
+      \strng{authorfullhash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{authorfullhashraw}{222707b046afbbd45f4022a8fe290c11}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv}
+      \field{title}{YOLOv9: Learning what you want to learn using programmable gradient information}
+      \field{year}{2024}
+    \endentry
+    \entry{Zhou2016CAM}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=c7cb7aa044ac5597397cceabad3765a3}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Bolei},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c8d6add84efe17681e0d4968ebf47fdc}{%
+           family={Khosla},
+           familyi={K\bibinitperiod},
+           given={Aditya},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ff625fa4a3aa4372da089f7c768a77c0}{%
+           family={Lapedriza},
+           familyi={L\bibinitperiod},
+           given={Agata},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b7446de83b2320d904225a0730e3389a}{%
+           family={Oliva},
+           familyi={O\bibinitperiod},
+           given={Aude},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2a80dd1cae02059e95bfed2f2715fd0a}{%
+           family={Torralba},
+           familyi={T\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{85a01c7844076348ef51e88248410965}
+      \strng{fullhash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{fullhashraw}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{bibnamehash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{authorbibnamehash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{authornamehash}{85a01c7844076348ef51e88248410965}
+      \strng{authorfullhash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{authorfullhashraw}{11813c4999ac7bb6f658ca15eb365e76}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}
+      \field{title}{Learning Deep Features for Discriminative Localization}
+      \field{year}{2016}
+      \field{pages}{2921\bibrangedash 2929}
+      \range{pages}{9}
+    \endentry
+  \enddatalist
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{AAA2021}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b8d2550c8710b0c0c743236cd9ba87b9}{%
+           family={{American Automobile Association}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{fullhash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{fullhashraw}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{bibnamehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authorbibnamehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authornamehash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authorfullhash}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \strng{authorfullhashraw}{b8d2550c8710b0c0c743236cd9ba87b9}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://newsroom.aaa.com/2022/02/pothole-damage-costs-u-s-drivers-3-billion-annually/}}
+      \field{note}{AAA survey reports \$26.5 billion in vehicle repair costs due to pothole damage in 2021}
+      \field{title}{Pothole Damage Costs U.S. Drivers \$3 Billion Annually}
+      \field{year}{2021}
+    \endentry
+    \entry{Arrieta2020XAI}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=94bf5c37ae25e1a4f902c67f8af0647b}{%
+           family={Arrieta},
+           familyi={A\bibinitperiod},
+           given={Alejandro\bibnamedelima Barredo},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f2f49e7916926b46a6555cf86c18c919}{%
+           family={Díaz-Rodríguez},
+           familyi={D\bibinithyphendelim R\bibinitperiod},
+           given={Natalia},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cad385a9bc804164f8a02ca66c24913e}{%
+           family={Del\bibnamedelima Ser},
+           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=eee76618bbe2267980002ac15fc73c9b}{%
+           family={Bennetot},
+           familyi={B\bibinitperiod},
+           given={Adrien},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5d79f34727bcbbd23065a0c111485c1b}{%
+           family={Tabik},
+           familyi={T\bibinitperiod},
+           given={Siham},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=43d5191cbb4190664e6dad9d9b27505e}{%
+           family={Barbado},
+           familyi={B\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1691f3ff4356c12149ac4f858ead7e04}{%
+           family={García},
+           familyi={G\bibinitperiod},
+           given={Salvador},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fca9608c0877fec28cda4245d80fad9d}{%
+           family={Gil-López},
+           familyi={G\bibinithyphendelim L\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=381bf37312a71cebeee50fc633f67c46}{%
+           family={Molina},
+           familyi={M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4ff51a3504ff841d75fa3640a2842bff}{%
+           family={Benjamins},
+           familyi={B\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8d645501efd3b19a683a4e9347e9604c}
+      \strng{fullhash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{fullhashraw}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{bibnamehash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{authorbibnamehash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{authornamehash}{8d645501efd3b19a683a4e9347e9604c}
+      \strng{authorfullhash}{f47fbe35649a7b2c8a65c95f4389af91}
+      \strng{authorfullhashraw}{f47fbe35649a7b2c8a65c95f4389af91}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Fusion}
+      \field{title}{Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI}
+      \field{volume}{58}
+      \field{year}{2020}
+      \field{pages}{82\bibrangedash 115}
+      \range{pages}{34}
+    \endentry
+    \entry{Arya2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=a586b53847bbfe8e1c0b9a659c7fd6aa}{%
+           family={Arya},
+           familyi={A\bibinitperiod},
+           given={Deeksha},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=684f04e6fa68cbf46757a8fc26aeeef6}{%
+           family={Maeda},
+           familyi={M\bibinitperiod},
+           given={Hiroya},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0a8428ff9ac75152597d3615f2c07bc2}{%
+           family={Ghosh},
+           familyi={G\bibinitperiod},
+           given={Sanjay\bibnamedelima Kumar},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7cbaaefb934a5d7a9938138ef5826e2d}{%
+           family={Toshniwal},
+           familyi={T\bibinitperiod},
+           given={Durga},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e46b6eac04d8ab6790a4ebd2ade4d320}{%
+           family={Sekimoto},
+           familyi={S\bibinitperiod},
+           given={Yoshihide},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{3dca9fe9721746cec6e34f725f08af33}
+      \strng{fullhash}{6c72083602b9925121823b1cea3e187d}
+      \strng{fullhashraw}{6c72083602b9925121823b1cea3e187d}
+      \strng{bibnamehash}{6c72083602b9925121823b1cea3e187d}
+      \strng{authorbibnamehash}{6c72083602b9925121823b1cea3e187d}
+      \strng{authornamehash}{3dca9fe9721746cec6e34f725f08af33}
+      \strng{authorfullhash}{6c72083602b9925121823b1cea3e187d}
+      \strng{authorfullhashraw}{6c72083602b9925121823b1cea3e187d}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Automation in Construction}
+      \field{title}{Deep Learning-Based Road Damage Detection and Classification for Multiple Countries}
+      \field{volume}{132}
+      \field{year}{2021}
+      \field{pages}{103935}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.autcon.2021.103935
+      \endverb
+    \endentry
+    \entry{ADB2012}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=92d83ccd39e6a187466ef617c8cb8662}{%
+           family={{Asian Development Bank}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{fullhash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{fullhashraw}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{bibnamehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authorbibnamehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authornamehash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authorfullhash}{92d83ccd39e6a187466ef617c8cb8662}
+      \strng{authorfullhashraw}{92d83ccd39e6a187466ef617c8cb8662}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Philippines: Transport Sector Assessment, Strategy, and Road Map}
+      \field{year}{2012}
+    \endentry
+    \entry{Burningham2005}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d7e92dc3cfd67dab0d0c81558361ba62}{%
+           family={Burningham},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8fde0566d60ce4b81588556d9ce2d121}{%
+           family={Stankevich},
+           familyi={S\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{fullhash}{d59e00bde6256b1b24379d691de96017}
+      \strng{fullhashraw}{d59e00bde6256b1b24379d691de96017}
+      \strng{bibnamehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authorbibnamehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authornamehash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authorfullhash}{d59e00bde6256b1b24379d691de96017}
+      \strng{authorfullhashraw}{d59e00bde6256b1b24379d691de96017}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Why road maintenance is important and how to get it done}
+      \field{year}{2005}
+    \endentry
+    \entry{Fortin2025XAI}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9cf63495f41b2f952a685b68509c481c}{%
+           family={Fortin},
+           familyi={F\bibinitperiod},
+           given={Leonhel\bibnamedelima V.},
+           giveni={L\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a04388332f07793a00f8bfe7e92a5e96}{%
+           family={Llantos},
+           familyi={L\bibinitperiod},
+           given={Orven\bibnamedelima E.},
+           giveni={O\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{fullhash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{fullhashraw}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{bibnamehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authorbibnamehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authornamehash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authorfullhash}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \strng{authorfullhashraw}{6f520ed0ce96a7210b4e0b24ef780ffb}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the International Conference}
+      \field{note}{Under review}
+      \field{title}{Explainable AI for Pothole Detection: Comparing YOLOv9-tiny, YOLOv10-nano, and YOLOv11-nano through LayerCAM Visualization}
+      \field{year}{2025}
+    \endentry
+    \entry{Jiang2021LayerCAM}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=efb65a2da63fe51c171a4f98dc6d558f}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Peng-Tao},
+           giveni={P\bibinithyphendelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d3c32927de358f1707c93459d77854ac}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Chang-Bin},
+           giveni={C\bibinithyphendelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f2d105116f208ed641dc9126d8209ee4}{%
+           family={Hou},
+           familyi={H\bibinitperiod},
+           given={Qibin},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bfbe355b6a8257baeffd5b8814bc5c57}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Ming-Ming},
+           giveni={M\bibinithyphendelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c600a8d986504b864d4994f2eed6156f}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Yunchao},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{819d4979a79d518dd1cae6ea338d0718}
+      \strng{fullhash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{fullhashraw}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{bibnamehash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{authorbibnamehash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{authornamehash}{819d4979a79d518dd1cae6ea338d0718}
+      \strng{authorfullhash}{10b63a781c8b171db6b4d0ddee07a50a}
+      \strng{authorfullhashraw}{10b63a781c8b171db6b4d0ddee07a50a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Image Processing}
+      \field{title}{LayerCAM: Exploring Hierarchical Class Activation Maps for Localization}
+      \field{volume}{30}
+      \field{year}{2021}
+      \field{pages}{5875\bibrangedash 5888}
+      \range{pages}{14}
+    \endentry
+    \entry{Koch2015}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eed6206739474089fbacb8e0b3c4fc9f}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6cff529158895304c8421fa283dde269}
+      \strng{fullhash}{6cff529158895304c8421fa283dde269}
+      \strng{fullhashraw}{6cff529158895304c8421fa283dde269}
+      \strng{bibnamehash}{6cff529158895304c8421fa283dde269}
+      \strng{authorbibnamehash}{6cff529158895304c8421fa283dde269}
+      \strng{authornamehash}{6cff529158895304c8421fa283dde269}
+      \strng{authorfullhash}{6cff529158895304c8421fa283dde269}
+      \strng{authorfullhashraw}{6cff529158895304c8421fa283dde269}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advanced Engineering Informatics}
+      \field{number}{2}
+      \field{title}{A review on computer vision based defect detection and condition assessment of concrete and asphalt civil infrastructure}
+      \field{volume}{29}
+      \field{year}{2015}
+      \field{pages}{196\bibrangedash 210}
+      \range{pages}{15}
+    \endentry
+    \entry{Majidifard2020}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=8cc21bf85ec006bf4203aabe600e1d29}{%
+           family={Majidifard},
+           familyi={M\bibinitperiod},
+           given={Hamed},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=37029ac4efb98995e99713f92d9dc8a3}{%
+           family={Jin},
+           familyi={J\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6665611d4b37449b2daaccad1e40f75e}{%
+           family={Adu-Gyamfi},
+           familyi={A\bibinithyphendelim G\bibinitperiod},
+           given={Yaw},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b2eff27afa5c00dab21dafbf1a62feb1}{%
+           family={Buttlar},
+           familyi={B\bibinitperiod},
+           given={William\bibnamedelima G.},
+           giveni={W\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications}%
+      }
+      \strng{namehash}{9bdb83c5f5624b6f9833eaff6ab46b7a}
+      \strng{fullhash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{fullhashraw}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{bibnamehash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{authorbibnamehash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{authornamehash}{9bdb83c5f5624b6f9833eaff6ab46b7a}
+      \strng{authorfullhash}{d2c06db72a0033674f86ed8c13cb100f}
+      \strng{authorfullhashraw}{d2c06db72a0033674f86ed8c13cb100f}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transportation Research Record}
+      \field{number}{2}
+      \field{title}{Pavement Image Datasets: A New Benchmark Dataset to Classify and Densify Pavement Distresses}
+      \field{volume}{2674}
+      \field{year}{2020}
+      \field{pages}{328\bibrangedash 339}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1177/0361198120907283
+      \endverb
+    \endentry
+    \entry{Ramos2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=be98c79fc9736aa6c12356a6c56f9766}{%
+           family={Ramos},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi A.\bibnamedelimi B.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bdce9fd2ef42bb0d127fcadf4b888cfb}{%
+           family={Ambrocio},
+           familyi={A\bibinitperiod},
+           given={L.\bibnamedelimi B.},
+           giveni={L\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e660ce7a08c4b3c2f351456529906fd8}{%
+           family={Dacanay},
+           familyi={D\bibinitperiod},
+           given={J.\bibnamedelimi P.\bibnamedelimi T.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f57d74570e40f150bf0facba563d02b1}
+      \strng{fullhash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{fullhashraw}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{bibnamehash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{authorbibnamehash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{authornamehash}{f57d74570e40f150bf0facba563d02b1}
+      \strng{authorfullhash}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \strng{authorfullhashraw}{831f1109aa8f2724b5e95b7c01cb0fca}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A review of the current practices in the pavement surface monitoring in the Philippines}
+      \field{year}{2022}
+    \endentry
+    \entry{S2015Implementation}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=3490c1ed6afc64ca5f520a731cee73fc}{%
+           family={S.},
+           familyi={S\bibinitperiod},
+           given={Sarsam},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1ddef220da6143ab9dbcad3f30c4a2c3}{%
+           family={A.},
+           familyi={A\bibinitperiod},
+           given={Daham},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bfe0265c7f7739c6c4b4c583dc7f5ffe}{%
+           family={A.},
+           familyi={A\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{58e4c4d8f6eb32bbb5101429dce66da5}
+      \strng{fullhash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{fullhashraw}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{bibnamehash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{authorbibnamehash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{authornamehash}{58e4c4d8f6eb32bbb5101429dce66da5}
+      \strng{authorfullhash}{c83ad546712948102d1ead3b7ab80d4c}
+      \strng{authorfullhashraw}{c83ad546712948102d1ead3b7ab80d4c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Implementation of {Close} {Range} {Photogrammetry} to {Evaluate} {Distresses} at {Asphalt} {Pavement} {Surface}}
+      \field{year}{2015}
+    \endentry
+    \entry{Sarsam2016Assessing}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b07a6dbe14ab623e18043cd6f89fe2ab}{%
+           family={Sarsam},
+           familyi={S\bibinitperiod},
+           given={Saad\bibnamedelima I.},
+           giveni={S\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f647ae3ceb89a09318a15d6f451c7a4}{%
+           family={Daham},
+           familyi={D\bibinitperiod},
+           given={Afrah\bibnamedelima Mekki},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=80228230886427873569eff11f6cbee7}{%
+           family={Ali},
+           familyi={A\bibinitperiod},
+           given={Amal\bibnamedelima Mahdi},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Journal of Engineering}%
+      }
+      \strng{namehash}{8822e98cf347798dd68e8005d92137e0}
+      \strng{fullhash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{fullhashraw}{f1315855cdbd7bf984644a220010ef08}
+      \strng{bibnamehash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{authorbibnamehash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{authornamehash}{8822e98cf347798dd68e8005d92137e0}
+      \strng{authorfullhash}{f1315855cdbd7bf984644a220010ef08}
+      \strng{authorfullhashraw}{f1315855cdbd7bf984644a220010ef08}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Engineering}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Assessing {Close} {Range} {Photogrammetric} {Approach} to {Evaluate} {Pavement} {Surface} {Condition}}
+      \field{volume}{22}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 14}
+      \range{pages}{14}
+    \endentry
+    \entry{Selvaraju2017GradCAM}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=2bb65ae1ae492d8a5f0410b495e608cf}{%
+           family={Selvaraju},
+           familyi={S\bibinitperiod},
+           given={Ramprasaath\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=615d55ccf6f32ec74ad65001e3a4ebbb}{%
+           family={Cogswell},
+           familyi={C\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95fdc805087b8b7c1bb60f09d4ee2641}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Abhishek},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=485265d172ca1779fa9691a5b6091cc8}{%
+           family={Vedantam},
+           familyi={V\bibinitperiod},
+           given={Ramakrishna},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0ab7a4601951a0c59352f1dcb531afb}{%
+           family={Parikh},
+           familyi={P\bibinitperiod},
+           given={Devi},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0a408119272ca1bd49b625e3b927d05}{%
+           family={Batra},
+           familyi={B\bibinitperiod},
+           given={Dhruv},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{44b36a9d8aed667d91631e9717a56509}
+      \strng{fullhash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{fullhashraw}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{bibnamehash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{authorbibnamehash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{authornamehash}{44b36a9d8aed667d91631e9717a56509}
+      \strng{authorfullhash}{aa15df90de6a99f6dc73b935fda62089}
+      \strng{authorfullhashraw}{aa15df90de6a99f6dc73b935fda62089}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE International Conference on Computer Vision}
+      \field{title}{Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization}
+      \field{year}{2017}
+      \field{pages}{618\bibrangedash 626}
+      \range{pages}{9}
+    \endentry
+    \entry{Wang2024b}{article}{}{}
+      \name{author}{7}{}{%
+        {{un=1,uniquepart=given,hash=a1017411e004825d4076c9a952b8b749}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=83702ad2b0cc9ef7ee381daa5f80b7f0}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=764caa9b1ba77be7a568d5390279a255}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bbd76d99dff4497fda6976a4f0146e4f}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b07e08d389bfad6c22931b7cb072ed36}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7fc1f626087edf07f8df670944037429}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3032dbcb09a455daab564234f2f68676}{%
+           family={Ding},
+           familyi={D\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{efba64248e10d873acbbca8bd320b966}
+      \strng{fullhash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{fullhashraw}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{bibnamehash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{authorbibnamehash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{authornamehash}{efba64248e10d873acbbca8bd320b966}
+      \strng{authorfullhash}{93ab764c2587cabed0102fe29728ddf8}
+      \strng{authorfullhashraw}{93ab764c2587cabed0102fe29728ddf8}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{YOLOv10: Real-Time End-to-End Object Detection}
+      \field{volume}{abs/2405.14458}
+      \field{year}{2024}
+    \endentry
+    \entry{Wang2024a}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=1,uniquepart=given,hash=8e89dcb803fceedaac3459e5e9a191d8}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={C.-Y.},
+           giveni={C\bibinithyphendelim Y\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=c078b4438f373647c60f4c6198d1e50c}{%
+           family={Yeh},
+           familyi={Y\bibinitperiod},
+           given={I.-H.},
+           giveni={I\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8009eb32a1168c24b607faa34283c76b}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={H.-Y.\bibnamedelimi M.},
+           giveni={H\bibinithyphendelim Y\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{696dc57a62d2bd908b64212c0b1b9a77}
+      \strng{fullhash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{fullhashraw}{222707b046afbbd45f4022a8fe290c11}
+      \strng{bibnamehash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{authorbibnamehash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{authornamehash}{696dc57a62d2bd908b64212c0b1b9a77}
+      \strng{authorfullhash}{222707b046afbbd45f4022a8fe290c11}
+      \strng{authorfullhashraw}{222707b046afbbd45f4022a8fe290c11}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv}
+      \field{title}{YOLOv9: Learning what you want to learn using programmable gradient information}
+      \field{year}{2024}
+    \endentry
+    \entry{Zhou2016CAM}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=c7cb7aa044ac5597397cceabad3765a3}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Bolei},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c8d6add84efe17681e0d4968ebf47fdc}{%
+           family={Khosla},
+           familyi={K\bibinitperiod},
+           given={Aditya},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ff625fa4a3aa4372da089f7c768a77c0}{%
+           family={Lapedriza},
+           familyi={L\bibinitperiod},
+           given={Agata},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b7446de83b2320d904225a0730e3389a}{%
+           family={Oliva},
+           familyi={O\bibinitperiod},
+           given={Aude},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2a80dd1cae02059e95bfed2f2715fd0a}{%
+           family={Torralba},
+           familyi={T\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{85a01c7844076348ef51e88248410965}
+      \strng{fullhash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{fullhashraw}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{bibnamehash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{authorbibnamehash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{authornamehash}{85a01c7844076348ef51e88248410965}
+      \strng{authorfullhash}{11813c4999ac7bb6f658ca15eb365e76}
+      \strng{authorfullhashraw}{11813c4999ac7bb6f658ca15eb365e76}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}
+      \field{title}{Learning Deep Features for Discriminative Localization}
+      \field{year}{2016}
+      \field{pages}{2921\bibrangedash 2929}
+      \range{pages}{9}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,327 @@
+--- PAGE 1 ---
+Explainable AI for Pothole Detection: Comparing
+YOLOv9-tiny, YOLOv10-nano, and
+YOLOv11-nano through LayerCAM Visualization
+Leonhel V. Fortin Orven E. Llantos
+Department of Computer Applications Department of Computer Science
+College of Computer Studies College of Computer Studies
+MSU-Iligan Institute of Technology MSU-Iligan Institute of Technology
+Tibanga, Iligan City, 9200, Philippines Tibanga, Iligan City, 9200, Philippines
+leonhel.fortin@g.msuiit.edu.ph orven.llantos@g.msuiit.edu.ph
+Abstract—Explainable AI (XAI) is critical for deploying au- In safety-critical domains such as infrastructure manage-
+tomated systems in safety-focused applications like infrastruc- ment,highdetectionaccuracyaloneisinsufficient.Automated
+ture monitoring. While lightweight YOLO architectures are
+systems must also demonstrate transparency and interpretabil-
+knownforhighperformanceinpotholedetection,understanding
+ity to gain the trust of civil engineers and public works
+their decision-making process is key to trusting them in real-
+world road assessments. This study provides a comprehensive officials.ThisprincipleiscentraltoExplainableAI(XAI)[3].
+interpretability analysis of YOLOv9-tiny, YOLOv10-nano, and Stakeholders require not only confirmation that a pothole has
+YOLOv11-nano using LayerCAM visualization. Experiments been detected but also insight into why the model identified
+on a large dataset of road surface images reveal significant
+a specific pavement feature as defective. Such transparency
+differences in the attention mechanisms across these compact
+is essential for model validation, debugging, and user trust,
+architectures.Quantitativeanalysisshowsthatallmodelsachieve
+excellentdetectionperformance,withmAP@0.5scoresexceeding ensuring that detection results can be reliably used to allocate
+0.980. However, LayerCAM analysis indicates that while newer maintenance resources.
+modelslikeYOLOv11-nanoproducemorespatiallyconcentrated Although the evolution of lightweight YOLO architec-
+attention hotspots, the broader attention patterns of YOLOv9- tures has consistently improved the balance between speed
+tiny exhibit a superior alignment with pothole boundaries,
+and accuracy, the impact of these architectural optimizations
+achieving a mean CAM IoU of 0.674 compared to 0.160 for
+on model interpretability remains largely unexplored. This
+YOLOv10-nano and 0.082 for YOLOv11-nano. These findings
+highlightatrade-offbetweenfocusedattentionandholisticobject study addresses this critical gap by performing a comparative
+representation,establishingcrucialexplainabilitybenchmarksfor analysis of the attention mechanisms in three state-of-the-
+deployingcomputervisionmodelsininfrastructuremanagement. art lightweight models: YOLOv9-tiny, YOLOv10-nano, and
+YOLOv11-nano. By applying LayerCAM, a gradient-based
+Keywords-lightweight computer vision, YOLO, LayerCAM, visualizationtechnique[4],theresearchinvestigateshowthese
+model interpretability, pothole detection, real-time object detec- models perceive and localize potholes.
+tion, explainable AI
+The investigation reveals a previously undocumented trade-
+off between architectural efficiency and interpretability. As
+I. INTRODUCTION modelsevolvetobecomemorecomputationallyefficient,their
+attention strategies shift from broad, context-aware focus to
+The maintenance of road infrastructure poses a persis- highly concentrated, pointer-like patterns. While all models
+tent and costly challenge for municipalities worldwide, with deliver excellent detection performance, the quality and type
+direct implications for public safety and economic activity of their explanations diverge significantly. These findings
+[1]. Traditional methods of road inspection rely on manual challenge the assumption that progress in model development
+surveys, which are slow, labor-intensive, and often subjective. is linear and highlight the importance of explainability-aware
+The advent of deep learning has enabled the development of model selection.
+automated systems for pothole detection, offering a scalable The primary contributions of this paper are:
+and efficient alternative [2]. Among the most successful ar- • A rigorous comparative interpretability analysis of state-
+chitectures for this real-time object detection task is the You of-the-art lightweight YOLO models for pothole detec-
+Only Look Once (YOLO) family, particularly its lightweight tion.
+variants, which are optimized for deployment on resource- • The identification and quantification of a fundamental
+constrainededgedevicessuchasthosemountedoninspection trade-offbetweenaholisticattentionmechanism(faithful
+vehicles or drones. to object shape) and a pointer-like one (optimized for
+
+--- PAGE 2 ---
+localization precision). novel architectural concepts to enhance efficiency while pre-
+• The adaptation of LayerCAM for lightweight YOLO serving performance.
+architectures, enabling stable, layer-wise attention visu- YOLOv9-tinyintroducedProgrammableGradientInforma-
+alization tailored for object detection tasks. tion (PGI) [8]. PGI is a novel concept that helps manage
+• Acomprehensivesetofquantitativebenchmarksforboth the flow of information through the network, mitigating the
+detection performance and interpretability, establishing a information loss that can occur in very deep feed-forward
+baseline for future research. networksandallowingthemodeltolearnmorediscriminative
+• An explainability-guided deployment strategy that en- features with fewer parameters.
+ables practitioners to select the most appropriate model YOLOv10-nano advanced the state of the art by focusing
+according to specific application requirements—whether onend-to-enddetection,mostnotablybycreatinganarchitec-
+comprehensive damage assessment or real-time anomaly ture that is free of Non-Maximum Suppression (NMS) [9]. It
+flagging. achieves this through a dual-label assignment strategy during
+In summary, this study extends beyond evaluating detec- training, which reduces post-processing latency and simplifies
+tion accuracy by systematically analyzing the interpretabil- the deployment pipeline.
+ity of lightweight YOLO models. Through the adaptation YOLOv11-nano represents the latest iteration, incorpo-
+of LayerCAM for object detection and the introduction of rating further architectural enhancements to refine feature
+new benchmarks, it uncovers a trade-off between holistic extractionandboostperformancewithinanextremelycompact
+and pointer-like attention strategies. These insights not only model [10]. These models push the boundaries of what is
+provide the first comparative framework for understanding in- possible on resource-constrained hardware. However, despite
+terpretabilityincompactYOLOarchitecturesbutalsoestablish detailed architectural descriptions from their authors, few
+practical guidelines for explainability-driven model selection studies have systematically investigated how these efficiency-
+in infrastructure monitoring. driven innovations affect the models’ internal attention mech-
+anisms and, consequently, their interpretability.
+II. RELATEDWORK
+C. Quantifying Interpretability
+A. Explainable AI in Computer Vision
+Qualitative assessment of heatmaps is subjective. To en-
+Explainable AI (XAI) aims to demystify the ”black box” able rigorous comparison, the XAI community has developed
+natureofdeepneuralnetworks,makingtheirdecision-making quantitative metrics to evaluate the quality of attention maps.
+processes transparent. In computer vision, a prominent family The”PointingGame”[22]assesseslocalizationprecision.Itis
+of XAI techniques revolves around Class Activation Maps considered a ”hit” if the point of maximum activation within
+(CAMs), which produce heatmaps that highlight the image a heatmap falls inside the ground-truth bounding box of the
+regions most influential to a model’s prediction. The original object. A high Pointing Accuracy score indicates that the
+CAMrequiredspecificglobalaveragepoolinglayers,limiting model’s attention is sharply focused on a correct part of the
+its applicability [5]. This limitation was overcome by Grad- object.
+CAM [6], which uses the gradients of the target class score To measure how well the heatmap covers the entire object,
+with respect to the feature maps of a convolutional layer. the Intersection over Union (IoU) between a binarized atten-
+This gradient-based approach made visualization possible for tion map and the ground-truth box is commonly used [12]. A
+a wide range of CNN-based architectures without requiring high CAM IoU score signifies that the explanation is faithful
+architectural changes. to the object’s full shape and extent. These two metrics often
+Further refinements led to techniques like Grad-CAM++ representaninherenttrade-off:ahighlyfocused,”pointer-like”
+[7], designed to provide better localization of multiple object heatmap may excel at the Pointing Game but score poorly on
+instances. LayerCAM [4], the technique used in this study, CAM IoU, while a more diffuse heatmap covering the entire
+represents a significant advancement. It produces more de- objectmightdotheopposite.Ourworkleveragesthesemetrics
+tailed and higher-quality activation maps by utilizing positive to quantify this trade-off in YOLO models.
+gradients from multiple layers, providing a more hierarchical
+and faithful representation of the model’s internal attention. D. Summary
+These visualization tools are indispensable for diagnosing The reviewed literature demonstrates significant progress
+model failures, verifying that a model is focusing on relevant in both explainable AI techniques and the evolution of
+features, and building trust in automated systems. lightweight YOLO architectures. Methods such as CAM,
+Grad-CAM, and LayerCAM have enhanced transparency in
+B. Lightweight YOLO Architecture Interpretability
+computer vision models, while YOLO variants have steadily
+The YOLO family of object detectors has continuously improveddetectionefficiencyandaccuracy.However,priorre-
+evolved to offer an optimal balance of speed and accuracy. searchhaslargelyoverlookedhowthesearchitecturaladvance-
+This evolution has included the development of lightweight ments influence interpretability in practice. Existing studies
+variants specifically designed for deployment on edge devices often emphasize performance metrics but provide limited
+with limited computational power. Each iteration introduces comparativeanalysisofattentionmechanisms,fewadaptations
+
+--- PAGE 3 ---
+of visualization methods tailored to object detection, and Interpretability metrics were computed only for true posi-
+no standardized benchmarks for evaluating interpretability tive detections,definedaspredictionswithIoU≥0.5against
+across lightweight YOLO models. These gaps justify the ground-truth bounding boxes. This deliberate restriction en-
+present study’s focus on systematically adapting LayerCAM sured that the analysis concentrated on understanding the
+to YOLO architectures, quantifying interpretability trade-offs, decision-making process of correct model predictions.
+andestablishingbenchmarksthatinformexplainability-guided
+deployment. In this way, the related work directly motivates D. Interpretability Metrics
+and supports the contributions outlined in Section I.
+The generated heatmaps were evaluated using three com-
+III. METHODOLOGY plementary metrics:
+This section outlines the dataset preparation, experimental • Mean CAM IoU: Measures the spatial alignment be-
+setup,modelselection,evaluationprotocol,andinterpretability tweenthemodel’sattentionandthefullobjectshape[12].
+metrics used in this study. The methodology was designed to The normalized heatmap was binarized at a threshold
+ensure fairness, reproducibility, and rigor. of0.3tocreateasegmentationmask,thencomparedwith
+the ground-truth bounding box using IoU.
+A. Dataset and Experimental Setup • Pointing Accuracy: Assesses localization precision by
+The evaluation employed a comprehensive dataset of 4,000 checkingifthemaximumactivationpointintheheatmap
+high-resolution road surface images. The dataset captured di- falls within the ground-truth box [22]. The score equals
+verse conditions, including daylight, dusk, and overcast skies, the ratio of hits to total true positives.
+and featured a wide range of pothole types, from incipient • Mean Energy Ratio: Calculates the proportion of the
+cracks to severe wide-area pavement defects. Each image heatmap’s total energy (sum of activation values) that is
+included precise ground-truth bounding box annotations, en- concentrated within the ground-truth bounding box [21].
+abling reliable quantitative evaluation. Thismetricmeasureshowwellthemodelavoidsfocusing
+All experiments were conducted in a reproducible Kag- on irrelevant background regions [22]. The ratio equals
+gle Notebook environment, accelerated by dual NVIDIA T4 the sum of activation values within the bounding box
+GPUs. The models were implemented in the PyTorch frame- divided by the total sum of all activation values in the
+work with a consistent input resolution of 640x640 pixels to heatmap.
+ensure a fair and direct comparison across all architectures
+[13]. IV. RESULTSANDINTERPRETABILITYANALYSIS
+B. Models This section presents the results of the comparative evalu-
+ation of YOLOv9-tiny, YOLOv10-nano, and YOLOv11-nano,
+TheanalysisutilizedlightweightYOLOmodels,specifically
+focusing on both detection performance and interpretability.
+YOLOv9-tiny [8], YOLOv10-nano [9], and YOLOv11-nano
+[10]. These models employed pre-trained weights from prior
+A. Detection Performance Context
+work,trainedwithoptimizedhyperparameterstoensurestable
+convergence and maximal detection performance [20]. Using As a prerequisite to interpretability analysis, the study es-
+pre-trained, high-performing models provided a robust base- tablished that all three lightweight models perform effectively
+line, allowing the study to focus squarely on interpretability in pothole detection. The results in Table I show that each
+rather than raw detection capability. model achieved excellent and broadly comparable accuracy,
+with mAP@0.5 scores above 0.980. This consistently high
+C. Evaluation Protocol
+performancevalidatesthesuitabilityofthemodelsforthetask.
+A custom Python script automated the evaluation process More importantly, it shifts the focus of the investigation from
+using PyTorch [13] and the Ultralytics library [14]. For each whether the models can detect potholes to how they reach
+model, the script processed all 4,000 images in two steps: their decisions, as this is where key differences emerge and
+1) executed the model’s predict function to obtain pothole interpretability becomes the critical factor.
+detections,and2)generatedacorrespondingattentionheatmap
+through a tailored LayerCAM implementation. TABLEI
+TheLayerCAMmethodwasspecificallyadaptedforYOLO QUANTITATIVECOMPARISONOFDETECTIONPERFORMANCEAND
+INTERPRETABILITYMETRICS.PREC.DENOTESPRECISION,REC.
+architectures. Class activation maps were generated from the
+DENOTESRECALL,POINT.ACC.DENOTESPOINTINGACCURACY,ANDE.
+final three convolutional layers in the model’s backbone, RATIODENOTESENERGYRATIO.
+immediately before the detection head. To enable class-
+agnostic gradient backpropagation, a pseudo-score was com- Model Prec. Rec. mAP@.5 CAMIoU Point.Acc. E.Ratio
+puted as the sum of all activations in the output feature maps. YOLOv9-tiny 0.924 0.964 0.983 0.674 0.670 0.934
+TheCAMsfromthethreelayerswerethenaveraged to form YOLOv10-nano 0.892 0.956 0.980 0.160 0.814 0.936
+YOLOv11-nano 0.921 0.956 0.984 0.082 0.787 0.932
+asingle,stableattentionmap,representingthemodel’shigh-
+level semantic focus.
+
+--- PAGE 4 ---
+B. Qualitative Analysis of Attention Mechanisms Finally, all models achieved strong Mean Energy Ratio
+scores (≈ 0.93), showing consistent focus on the object rather
+The LayerCAM visualizations in Figure 1 reveal a system-
+than background noise.
+atic evolution in attention strategies across the YOLO gener-
+ations. This qualitative evidence anchors the central thesis of D. Results Summary
+the study. Insummary,theseresultsconfirmthatallthreeYOLOmod-
+YOLOv9-tiny exhibits a holistic attention pattern, with els deliver high detection accuracy, but their interpretability
+broad,diffuseactivationsthatcoverthefullextentofpotholes profiles differ significantly. The comparative evaluation re-
+and theirimmediate context. Thispattern suggests reliance on vealed a consistent trade-off between holistic and pointer-like
+contextual cues and overall surface texture to identify defects. attention strategies. The tailored LayerCAM implementation
+In the complex scene shown, this behavior yields a CAM IoU enabled stable visualization across YOLO architectures, while
+of 0.472, aligning well with the actual damaged regions. the use of CAM IoU, Pointing Accuracy, and Energy Ratio
+In contrast, YOLOv10-nano and YOLOv11-nano demon- establishedreproducibleinterpretabilitybenchmarks.Together,
+strateapointer-likeattentionstrategy.Theirheatmapsconcen- these findings form the foundation for explainability-guided
+trate into sharp, localized hotspots that emphasize discrimina- deployment strategies.
+tive subregions, such as sharp edges or deep shadows. While
+V. CONCLUSION
+highly efficient, this approach sacrifices holistic coverage of
+the object. The corresponding CAM IoU scores—0.040 for This study delivered a rigorous comparative analysis of
+YOLOv10-nanoand0.022forYOLOv11-nano—illustratethis lightweight YOLO architectures, offering critical insights into
+trade-off clearly. the relationship between model evolution and interpretability
+in pothole detection. By adapting LayerCAM to object detec-
+tion tasks and applying it systematically across YOLOv9-tiny,
+YOLOv10-nano, and YOLOv11-nano, the analysis revealed
+a clear distinction in their attention mechanisms. YOLOv9-
+tiny demonstrated a holistic and context-aware strategy that
+faithfully aligned with pothole boundaries, while YOLOv10-
+nano and YOLOv11-nano exhibited a pointer-like focus that
+prioritized localization precision at the expense of complete
+shape representation.
+The evaluation established reproducible benchmarks, in-
+cluding CAM IoU, Pointing Accuracy, and Energy Ratio,
+which quantified these interpretability trade-offs and provided
+a foundation for future research. These results emphasize that
+detection accuracy alone is insufficient for model selection
+in safety-critical applications. Instead, model choice must
+Fig. 1. LayerCAM analysis of a complex multi-pothole road scene. Each also consider explainability requirements. YOLOv9-tiny is
+row shows: a) original image, b) detection results, c) LayerCAM attention
+best suited for detailed human-in-the-loop damage assess-
+heatmap,andd)acombinedoverlay.YOLOv9-tinydemonstratesadistributed
+attention pattern with 12 detections and high alignment (CAM IoU: 0.472). ment, while YOLOv10-nano and YOLOv11-nano provide
+YOLOv10-nano shows more focused attention but lower alignment (11 advantages for fast, automated anomaly flagging. Overall,
+detections, CAM IoU: 0.040). YOLOv11-nano exhibits highly concentrated
+the findings highlight the importance of explainability-aware
+hotspotsthatarepoorlyalignedwithfullpotholeboundaries(18detections,
+CAMIoU:0.022). deploymentstrategiesthatalignmodelinterpretabilitywiththe
+practical needs of infrastructure monitoring.
+VI. FUTUREWORK
+C. Quantitative Interpretability Assessment
+Future research can extend this work in several directions.
+The metrics in Table I confirm the qualitative findings and First, expanding the evaluation to multiple datasets across
+highlight the nature of the interpretability trade-off. diverse geographic regions and road conditions would test
+YOLOv9-tiny excels in holistic alignment, achieving the generalizability of the interpretability patterns observed.
+a mean CAM IoU of 0.674, over four times higher Second, incorporating alternative XAI techniques such as
+than YOLOv10-nano (0.160) and eight times higher than Integrated Gradients or attention rollout could provide com-
+YOLOv11-nano (0.082). This confirms its ability to represent plementary perspectives on model decision-making. Third,
+a pothole’s complete shape and context. applying temporal analysis to video data would reveal how
+YOLOv10-nano leads in pointing precision, achieving these models sustain attention over time in dynamic mon-
+a Pointing Accuracy of 0.814, with YOLOv11-nano close itoring tasks. Finally, integrating interpretability objectives
+behind at 0.787, both outperforming YOLOv9-tiny (0.670). directly into the training process—such as attention-guided
+Theseresultsshowthatwhilenewermodelsexcelatlocalizing lossfunctions—offersapromisingavenuetobalancedetection
+discriminativefeatures,theyfailtocapturethefullobjectform. performance with more faithful and holistic explanations.
+
+--- PAGE 5 ---
+USEOFGENERATIVEAI [18] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You Only Look
+Once: Unified, Real-Time Object Detection,” in Proc. IEEE Conf.
+GenerativeAItools(ChatGPTandClaudeAI)wereutilized
+ComputerVisionandPatternRecognition(CVPR),2016,pp.779–788.
+by the authors to assist with improving the grammar, clarity, [19] C.-Y. Wang, A. Bochkovskiy, and H.-Y. M. Liao, “YOLOv7: Train-
+andreadabilityofthemanuscript.Thecoreresearch,including able Bag-of-Freebies Sets New State-of-the-Art for Real-Time Object
+Detectors,” in Proc. IEEE/CVF Conf. Computer Vision and Pattern
+literature review, data analysis, and interpretation of results,
+Recognition(CVPR),2023,pp.7464–7475.
+was conducted independently by the authors, who reviewed, [20] L.V.FortinandO.E.Llantos,“PerformanceAnalysisofYOLOversions
+edited, and take full responsibility for the final content of this forReal-timePotholeDetection,”ProcediaComputerScience,vol.257,
+pp.77–84,2025.
+publication.
+[21] J. Choe and H. Shim, “Attention-based Dropout Layer for Weakly
+Supervised Object Localization,” in Proc. IEEE Int. Conf. Computer
+ACKNOWLEDGMENT
+Vision(ICCV),2019,pp.2213–2222.
+The authors express their gratitude to the Department of [22] J. Zhang, S. A. Bargal, Z. Lin, J. Brandt, X. Shen, and S. Sclaroff,
+“Top-DownNeuralAttentionbyExcitationBackprop,”Int.J.Comput.
+Science and Technology - Engineering Research and Devel-
+Vis.,vol.126,no.10,pp.1084–1102,2018.
+opment for Technology (DOST-ERDT) and Mindanao State
+University - Iligan Institute of Technology (MSU-IIT) for
+funding this research work.
+REFERENCES
+[1] R.Fan,U.O¨zgu¨nalp,B.Hosking,M.Liu,andI.Pitas,“PotholeDetec-
+tion Based on Disparity Transformation and Road Surface Modeling,”
+IEEETrans.ImageProcess.,vol.29,pp.897–908,2020.
+[2] N. Ma, J. Fan, W. Wang, J. Wu, Y. Jiang, L. Xie, and R. Fan,
+“Computer Vision for Road Imaging and Pothole Detection: A State-
+of-the-Art Review of Systems and Algorithms,” Transportation Safety
+andEnvironment,vol.4,no.4,Dec.2022,Art.no.tdac026.
+[3] A.B.Arrietaetal.,“ExplainableArtificialIntelligence(XAI):Concepts,
+taxonomies,opportunitiesandchallenges,”InformationFusion,vol.58,
+pp.82–115,2020.
+[4] P.-T. Jiang, C.-B. Zhang, Q. Hou, M.-M. Cheng, and Y. Wei, “Layer-
+CAM:ExploringHierarchicalClassActivationMapsforLocalization,”
+IEEETrans.ImageProcess.,vol.30,pp.5875–5888,2021.
+[5] B.Zhou,A.Khosla,A.Lapedriza,A.Oliva,andA.Torralba,“Learning
+Deep Features for Discriminative Localization,” in Proc. IEEE Conf.
+Computer Vision and Pattern Recognition (CVPR), 2016, pp. 2921–
+2929.
+[6] R. R. Selvaraju, M. Cogswell, A. Das, R. Vedantam, D. Parikh, and
+D. Batra, “Grad-CAM: Visual Explanations from Deep Networks via
+Gradient-BasedLocalization,”inProc.IEEEInt.Conf.ComputerVision
+(ICCV),2017,pp.618–626.
+[7] A.Chattopadhyay,A.Sarkar,P.Howlader,andV.N.Balasubramanian,
+“Grad-CAM++: Generalized Gradient-based Visual Explanations for
+DeepConvolutionalNetworks,”inProc.IEEEWinterConf.Applications
+ofComputerVision(WACV),2018,pp.839–847.
+[8] C.-Y. Wang, I.-H. Yeh, and H.-Y. M. Liao, “YOLOv9: Learning What
+YouWanttoLearnUsingProgrammableGradientInformation,”arXiv
+preprintarXiv:2402.13616,2024.
+[9] A. Wang, H. Chen, L. Liu, K. Chen, Z. Lin, J. Han, and G. Ding,
+“YOLOv10: Real-Time End-to-End Object Detection,” arXiv preprint
+arXiv:2405.14458,2024.
+[10] R. Khanam and M. Hussain, “YOLOv11: An Overview of the Key
+ArchitecturalEnhancements,”arXivpreprintarXiv:2410.17725,2024.
+[11] J. Zhang, S. A. Bargal, Z. Lin, J. Brandt, X. Shen, and S. Sclaroff,
+“Top-DownNeuralAttentionbyExcitationBackprop,”Int.J.Comput.
+Vis.,vol.126,no.10,pp.1084–1102,2018.
+[12] J.ChoeandH.Shim,“EvaluationofLocalizationforWeaklySupervised
+ObjectLocalization,”IEEEAccess,vol.8,pp.207438–207450,2020.
+[13] A. Paszke et al., “PyTorch: An Imperative Style, High-Performance
+DeepLearningLibrary,”inAdvancesinNeuralInformationProcessing
+Systems32,2019,pp.8024–8035.
+[14] G.Jocheretal.,“UltralyticsYOLOv5,”2020,[Online].Available:https:
+//github.com/ultralytics/yolov5.
+[15] M.Sundararajan,A.Taly,andQ.Yan,“AxiomaticAttributionforDeep
+Networks,” in Proc. Int. Conf. Machine Learning (ICML), 2017, pp.
+3319–3328.
+[16] S.AbnarandW.Zuidema,“QuantifyingAttentionFlowinTransform-
+ers,”inProc.58thAnnualMeetingoftheAssociationforComputational
+Linguistics,2020,pp.4190–4197.
+[17] J. Choe and H. Shim, “Attention-based Dropout Layer for Weakly
+Supervised Object Localization,” in Proc. IEEE Int. Conf. Computer
+Vision(ICCV),2019,pp.2213–2222.
+

@@ -1,0 +1,16 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Conceptual framework illustrating the Hybrid AIoT Architecture influencing detection accuracy, measurement precision, and system efficiency, moderated by environmental and calibration factors.}}{4}{figure.caption.7}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces PRISMA Flow Diagram of Study Selection Process}}{8}{figure.caption.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Research framework implementation based on CRISP-DM for the pothole detection system.}}{13}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Dashcam geometry in a compact sedan showing depression angle ($\theta $), camera height ($H$), and detection distance ($D$) to a pothole.}}{14}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Three-layer AIoT system architecture for Eyeway 2.0.}}{15}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Surface area calculation concept: detected pothole pixels in image plane are back-projected to real-world dimensions using depth information and camera intrinsics.}}{18}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Data processing pipeline showing parallel detection and depth estimation with fusion for surface area quantification.}}{18}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Cloud infrastructure architecture showing Supabase serverless components and data flow from edge device to application layer.}}{19}{figure.caption.20}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces LayerCAM attention visualization comparing YOLOv9-tiny, YOLOv10-nano, and YOLOv11-nano. YOLOv9-tiny demonstrates holistic attention covering the full pothole extent, while YOLOv10-nano and YOLOv11-nano exhibit pointer-like attention focused on discriminative subregions.}}{23}{figure.caption.25}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

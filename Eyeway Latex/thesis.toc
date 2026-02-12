@@ -1,0 +1,84 @@
+\contentsline {chapter}{Abstract}{iii}{section*.1}%
+\contentsline {chapter}{List of Tables}{viii}{section*.3}%
+\contentsline {chapter}{List of Figures}{ix}{section*.5}%
+\contentsline {chapter}{\numberline {1}INTRODUCTION}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Background of the Study}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Statement of the Problem}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objectives of the Study}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Significance of the Study}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Conceptual Framework}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Scope and Limitations}{4}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Scope}{4}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Limitations}{5}{subsection.1.6.2}%
+\contentsline {section}{\numberline {1.7}Definition of Terms}{5}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Summary}{6}{section.1.8}%
+\contentsline {chapter}{\numberline {2}SYSTEMATIC LITERATURE REVIEW}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Methodology}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Search Strategy}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Selection Criteria}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Quality Assessment}{8}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Literature Review}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Evolution of Road Surface Inspection (2008-2015)}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Deep Learning Developments (2016-2024)}{9}{subsection.2.3.2}%
+\contentsline {subsubsection}{YOLO Architecture Evolution}{9}{subsubsection*.9}%
+\contentsline {subsection}{\numberline {2.3.3}Detection Performance Analysis}{9}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Explainable AI in Computer Vision}{9}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Implementation Analysis}{11}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Mobile System Performance}{11}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Cost-Benefit Analysis}{11}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Research Gaps}{11}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Knowledge Gaps}{11}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Technology Gaps}{12}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Methodology Gaps}{12}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}METHODOLOGY}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Research Framework}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Business Understanding Phase}{14}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}System Requirements}{14}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}System Architecture}{15}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Data Understanding Phase}{15}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Dataset Development}{15}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Operating Parameters}{16}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Data Preparation Phase}{16}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Image Processing Protocol}{16}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Spatial Reference System}{16}{subsection.3.6.2}%
+\contentsline {section}{\numberline {3.7}Modeling Phase}{16}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Model Selection via Explainability Analysis}{16}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Detection System Development (YOLOv9-tiny)}{17}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Monocular Metric Depth \& Surface Area}{17}{subsection.3.7.3}%
+\contentsline {section}{\numberline {3.8}Evaluation Phase}{18}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Performance Assessment}{18}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Integration Testing}{18}{subsection.3.8.2}%
+\contentsline {section}{\numberline {3.9}Deployment Phase}{19}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Installation Requirements}{19}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}Cloud Infrastructure Development}{19}{subsection.3.9.2}%
+\contentsline {chapter}{\numberline {4}INITIAL RESULTS AND DISCUSSION}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Business Understanding Results}{20}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Data Understanding Results}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Data Preparation Results}{21}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Modeling Results}{21}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Explainability Analysis Results}{22}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Qualitative Attention Analysis}{23}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Quantitative Interpretability Metrics}{23}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Implications for Surface Area Estimation}{24}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}System Evaluation Results}{24}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Deployment Results}{25}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Conclusion and Recommendations}{26}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary}{26}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Key Findings}{26}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Contributions}{27}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Recommendations}{27}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}For Infrastructure Monitoring Deployment}{27}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}For Future Research}{28}{subsection.5.4.2}%
+\contentsline {section}{\numberline {5.5}Limitations}{28}{section.5.5}%
+\global \c@tocdepth 1\relax 
+\contentsline {chapter}{Appendices}{29}{section*.27}%
+\renewcommand {\cftsecpresnum }{Appendix }
+\renewcommand {\cftsecnumwidth }{5.75em}
+\renewcommand {\cftsecaftersnum }{:}
+\begingroup \let \l@chapter \l@section \let \l@section \l@subsection 
+\contentsline {chapter}{\numberline {A}Experimental Equipment}{30}{appendix.1.A}%
+\contentsline {chapter}{\numberline {B}Data Processing}{31}{appendix.1.B}%
+\endgroup 
+\contentsline {chapter}{References}{32}{section*.28}%

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaTeX Thesis Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              background: "var(--bg-app)",
+              panel: "var(--bg-panel)",
+              surface: "var(--bg-surface)",
+              foreground: "var(--fg-primary)",
+              muted: "var(--fg-secondary)",
+              border: "var(--border)",
+              primary: {
+                DEFAULT: "var(--accent)",
+                foreground: "#ffffff",
+              },
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      :root {
+        /* Light Mode: Clean White */
+        --bg-app: #ffffff;
+        --bg-panel: #f8fafc; /* Very light slate for sidebar */
+        --bg-surface: #eff6ff; /* Very light blueish tint for selection */
+        --fg-primary: #334155; /* Slate 700 */
+        --fg-secondary: #64748b; /* Slate 500 */
+        --border: #e2e8f0; /* Slate 200 */
+        --accent: #2959aa; /* Tokyo Night Blue for consistency */
+      }
+
+      .dark {
+        /* Tokyo Night Dark */
+        --bg-app: #1a1b26;
+        --bg-panel: #16161e;
+        --bg-surface: #292e42;
+        --fg-primary: #c0caf5;
+        --fg-secondary: #565f89;
+        --border: #292e42;
+        --accent: #7aa2f7;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* App-like feel */
+        background-color: var(--bg-app);
+        color: var(--fg-primary);
+      }
+
+      /* No theme transitions - Monaco doesn't support them, 
+         so instant switching ensures everything changes together */
+      /* Custom scrollbar for file explorer */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
+      }
+      .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+        background: var(--fg-secondary);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "zustand": "https://aistudiocdn.com/zustand@^5.0.9",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "@monaco-editor/react": "https://aistudiocdn.com/@monaco-editor/react@^4.7.0",
+    "fflate": "https://unpkg.com/fflate@0.8.2/esm/browser.js"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="antialiased">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

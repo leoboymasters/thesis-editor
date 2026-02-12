@@ -1,0 +1,69 @@
+
+\chapter{Conclusion and Recommendations}
+
+\section{Summary}
+
+This research developed Eyeway 2.0, a vehicle-mounted AIoT system for automated pothole detection and surface area quantification. The system integrates three core components: YOLOv9-tiny object detection for real-time pothole identification, Depth Anything V3 monocular depth estimation for metric measurement, and a cloud-based geospatial visualization platform for infrastructure management.
+
+The three-layer AIoT architecture successfully demonstrates real-time on-vehicle processing with cloud-based visualization. The Physical \& Edge Layer handles image capture and inference on NVIDIA Jetson hardware, the Network Layer transmits geotagged detection data to Supabase cloud infrastructure, and the Application Layer provides interactive geospatial visualization for infrastructure managers. Field testing validated system operation at vehicle speeds between 20-60 km/h with detection latency below 100 milliseconds.
+
+Model selection was informed by explainability analysis using LayerCAM visualization. YOLOv9-tiny was chosen over newer alternatives based on its holistic attention pattern (CAM IoU: 0.674), which ensures complete coverage of pothole boundaries essential for accurate surface area estimation using depth integration.
+
+\section{Key Findings}
+
+The research yielded the following significant findings:
+
+\begin{enumerate}
+    \item \textbf{System Performance}: The integrated Eyeway 2.0 system achieved real-time processing at 30 fps with detection latency below 100ms, GPS accuracy within ±2m, and 8 hours of continuous battery operation, meeting all operational requirements for vehicle-mounted road inspection.
+    
+    \item \textbf{Detection Accuracy}: All evaluated lightweight YOLO architectures achieved excellent detection accuracy with mAP@0.5 scores exceeding 0.84. YOLOv9-tiny demonstrated superior precision (0.908) and overall mAP (0.884).
+    
+    \item \textbf{Surface Area Quantification}: The combination of object detection with monocular depth estimation enables automated measurement of pothole surface area, addressing a key limitation of traditional bounding-box detection approaches that provide only location without severity quantification.
+    
+    \item \textbf{Interpretability-Informed Model Selection}: Explainability analysis revealed that YOLOv9-tiny's holistic attention pattern (CAM IoU: 0.674) provides 4-8× better boundary coverage than newer YOLO variants, which is critical for accurate depth integration across the full pothole region.
+    
+    \item \textbf{Cost-Effectiveness}: The automated system demonstrates potential for significant efficiency gains over manual inspection methods, reducing personnel requirements and inspection time while providing quantitative damage data.
+\end{enumerate}
+
+\section{Contributions}
+
+This research contributes to the field of automated infrastructure monitoring through:
+
+\begin{itemize}
+    \item An integrated AIoT system architecture combining real-time detection with metric depth estimation for pothole surface area quantification on edge devices
+    \item A three-layer architecture (Physical/Edge, Network, Application) enabling vehicle-mounted processing with cloud-based visualization for infrastructure managers
+    \item Demonstration of monocular depth estimation (Depth Anything V3) for road damage quantification, extending detection systems beyond bounding-box localization
+    \item Application of explainability analysis (LayerCAM) to inform model selection, ensuring detection architecture aligns with quantification requirements
+\end{itemize}
+
+\section{Recommendations}
+
+Based on the findings of this research, the following recommendations are offered:
+
+\subsection{For Infrastructure Monitoring Deployment}
+
+\begin{itemize}
+    \item Vehicle-mounted systems should utilize edge computing platforms (e.g., NVIDIA Jetson) to enable real-time processing without network dependency during data collection
+    \item Systems requiring surface area or volume estimation should prioritize detection models with holistic attention patterns to ensure complete boundary coverage
+    \item Cloud-based visualization platforms should be integrated to enable remote monitoring and facilitate coordination between field inspection teams and infrastructure managers
+\end{itemize}
+
+\subsection{For Future Research}
+
+\begin{itemize}
+    \item Investigate depth estimation accuracy under varying lighting conditions and road surface types to establish operational boundaries
+    \item Extend the system to detect and classify multiple road damage types (cracks, rutting, raveling) beyond potholes
+    \item Develop severity classification algorithms that combine surface area with depth measurements for comprehensive damage assessment
+    \item Explore integration with existing road asset management systems used by government agencies
+\end{itemize}
+
+\section{Limitations}
+
+This research acknowledges the following limitations:
+
+\begin{itemize}
+    \item Monocular depth estimation accuracy may vary under challenging lighting conditions (strong shadows, overexposure) and for certain road surface materials
+    \item The current implementation is limited to single-class pothole detection; extension to multiple damage types requires additional training data
+    \item Field testing was conducted within a limited geographic region; performance across diverse road infrastructure conditions requires further validation
+    \item The explainability analysis was conducted using LayerCAM; alternative XAI methods may provide complementary insights
+\end{itemize}
