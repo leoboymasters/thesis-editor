@@ -1,20 +1,38 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Thesis Editor
 
-# Run and deploy your AI Studio app
+A professional web-based editor for LaTeX thesis documents.
 
-This contains everything you need to run your app locally.
+## Features
+- Real-time LaTeX editing
+- Live PDF preview
+- Document structure navigation
+- Project management and storage
 
-View your app in AI Studio: https://ai.studio/apps/drive/1hoLBLbOLkGAiVqellpCedgvsyCvY96sB
+## Getting Started
 
-## Run Locally
+### Prerequisites
+- [Bun](https://bun.sh/) (recommended) or Node.js
 
-**Prerequisites:**  Bun
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/leoboymasters/thesis-editor.git
+   cd thesis-editor
+   ```
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
+3. Create a `.env.local` file and add your environment variables (e.g., `GEMINI_API_KEY`).
 
+### Development
+Run the development server:
+```bash
+bun run dev
+```
 
-1. Install dependencies:
-   `bun install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `bun run dev`
+## Technologies
+- React
+- TypeScript
+- Vite
+- PDF.js / LaTeX Parser components
