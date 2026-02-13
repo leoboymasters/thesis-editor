@@ -13,7 +13,9 @@ interface ProjectStore extends EditorState {
   settingsOpen: boolean;
   editorMode: 'rich' | 'raw';
   templatePickerOpen: boolean;
+  citationModalOpen: boolean;
   toggleTemplatePicker: () => void;
+  toggleCitationModal: () => void;
   loadTemplate: (template: ThesisTemplate) => void;
   setActiveFile: (id: string) => void;
   updateFileContent: (id: string, content: string) => void;
@@ -46,6 +48,7 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   settingsOpen: false,
   editorMode: 'rich' as const,
   templatePickerOpen: false,
+  citationModalOpen: false,
 
   setActiveFile: (id) => set({ activeFileId: id }),
 
@@ -80,6 +83,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   })),
 
   toggleTemplatePicker: () => set((state) => ({ templatePickerOpen: !state.templatePickerOpen })),
+
+  toggleCitationModal: () => set((state) => ({ citationModalOpen: !state.citationModalOpen })),
 
   loadTemplate: (template) => {
     clearCompilationCache();

@@ -6,10 +6,11 @@ import { CodeEditor } from './components/Editor/CodeEditor';
 import { RichTextEditor } from './components/Editor/RichTextEditor';
 import { PdfViewer } from './components/Preview/PdfViewer';
 import { TemplatePickerModal } from './components/Templates/TemplatePickerModal';
+import { CitationModal } from './components/Citations/CitationModal';
 import { useProjectStore } from './store/projectStore';
 
 const App = () => {
-  const { sidebarVisible, previewVisible, theme, editorMode, templatePickerOpen, toggleTemplatePicker } = useProjectStore();
+  const { sidebarVisible, previewVisible, theme, editorMode, templatePickerOpen, toggleTemplatePicker, citationModalOpen, toggleCitationModal } = useProjectStore();
 
   return (
     <div className={`${theme} flex flex-col h-screen w-screen bg-background text-foreground overflow-hidden`}>
@@ -59,6 +60,9 @@ const App = () => {
 
       {/* Template Picker Modal */}
       {templatePickerOpen && <TemplatePickerModal onClose={toggleTemplatePicker} />}
+
+      {/* Citation Modal */}
+      {citationModalOpen && <CitationModal onClose={toggleCitationModal} />}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus } from 'lucide-react';
+import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus, BookMarked } from 'lucide-react';
 import { useProjectStore } from '../../store/projectStore';
 
 export const TopBar = () => {
@@ -22,6 +22,7 @@ export const TopBar = () => {
     editorMode,
     toggleEditorMode,
     toggleTemplatePicker,
+    toggleCitationModal,
   } = useProjectStore();
 
   const activeFile = activeFileId ? files[activeFileId] : null;
@@ -53,6 +54,15 @@ export const TopBar = () => {
         >
           <Plus size={14} />
           New Project
+        </button>
+
+        <button
+          onClick={toggleCitationModal}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted hover:bg-surface hover:text-foreground transition-colors"
+          title="Add Citation"
+        >
+          <BookMarked size={14} />
+          Cite
         </button>
       </div>
 
