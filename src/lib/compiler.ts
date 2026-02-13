@@ -749,7 +749,8 @@ export const compileProject = async (
     if (compilationMode === 'local') {
       pdfBlob = await compileWithLocal(resources, onProgress);
     } else {
-      pdfBlob = await compileWithYtoTech(resources, onProgress, 'pdflatex', true);
+      const needsBiber = mainTexFile.content.includes('biblatex') || mainTexFile.content.includes('\\addbibresource');
+      pdfBlob = await compileWithYtoTech(resources, onProgress, 'pdflatex', needsBiber);
     }
 
     const pdfUrl = URL.createObjectURL(pdfBlob);

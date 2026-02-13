@@ -25,7 +25,7 @@ export const TemplatePickerModal: React.FC<Props> = ({ onClose }) => {
         preamble: customPreamble,
         sections: [
           { name: 'main-content.tex', tiptapContent: { type: 'doc', content: [
-            { type: 'paragraph', content: [] }
+            { type: 'paragraph', content: [{ type: 'text', text: 'Start writing your document here.' }] }
           ]}}
         ],
       };
