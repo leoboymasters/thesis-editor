@@ -24,7 +24,7 @@ const ESCAPE_MAP: Record<string, string> = {
   '~': '\\textasciitilde{}',
 };
 
-const ESCAPE_PATTERN = /[\\{}\$&%#_^~]/g;
+const ESCAPE_PATTERN = /[\\{}$&%#_^~]/g;
 
 const escapeLatex = (text: string): string =>
   text.replace(ESCAPE_PATTERN, (ch) => ESCAPE_MAP[ch]);

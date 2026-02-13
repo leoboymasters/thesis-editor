@@ -128,4 +128,14 @@ describe('jsonToLatex', () => {
     expect(result).toContain('\\textasciicircum{}');
     expect(result).not.toContain('\\textasciicircum\\{\\}');
   });
+
+  it('escapes tilde correctly', () => {
+    const doc = {
+      type: 'doc',
+      content: [{ type: 'paragraph', content: [{ type: 'text', text: 'a~b' }] }],
+    };
+    const result = jsonToLatex(doc);
+    expect(result).toContain('\\textasciitilde{}');
+    expect(result).not.toContain('\\textasciitilde\\{\\}');
+  });
 });
