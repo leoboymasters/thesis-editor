@@ -3,11 +3,12 @@ import { Sidebar } from './components/Layout/Sidebar';
 import { TopBar } from './components/Layout/TopBar';
 import { SettingsModal } from './components/Layout/SettingsModal';
 import { CodeEditor } from './components/Editor/CodeEditor';
+import { RichTextEditor } from './components/Editor/RichTextEditor';
 import { PdfViewer } from './components/Preview/PdfViewer';
 import { useProjectStore } from './store/projectStore';
 
 const App = () => {
-  const { sidebarVisible, previewVisible, theme } = useProjectStore();
+  const { sidebarVisible, previewVisible, theme, editorMode } = useProjectStore();
 
   return (
     <div className={`${theme} flex flex-col h-screen w-screen bg-background text-foreground overflow-hidden`}>
@@ -27,7 +28,7 @@ const App = () => {
         {/* Main Editor Area */}
         <div className="flex-1 flex min-w-0 bg-background">
           <div className="flex-1 flex flex-col min-w-0">
-            <CodeEditor />
+            {editorMode === 'rich' ? <RichTextEditor /> : <CodeEditor />}
           </div>
 
           {/* Preview Split */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw } from 'lucide-react';
+import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type } from 'lucide-react';
 import { useProjectStore } from '../../store/projectStore';
 
 export const TopBar = () => {
@@ -18,7 +18,9 @@ export const TopBar = () => {
     files,
     compileProgress,
     toggleSettings,
-    compilationMode
+    compilationMode,
+    editorMode,
+    toggleEditorMode,
   } = useProjectStore();
 
   const activeFile = activeFileId ? files[activeFileId] : null;
@@ -57,6 +59,29 @@ export const TopBar = () => {
             </>
           )}
         </div>
+
+        {/* Editor Mode Toggle */}
+        <button
+          onClick={toggleEditorMode}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+            editorMode === 'rich'
+              ? 'bg-surface text-foreground'
+              : 'bg-surface text-foreground'
+          } hover:bg-border`}
+          title={editorMode === 'rich' ? 'Switch to Raw LaTeX' : 'Switch to Rich Text'}
+        >
+          {editorMode === 'rich' ? (
+            <>
+              <Code2 size={14} />
+              Raw LaTeX
+            </>
+          ) : (
+            <>
+              <Type size={14} />
+              Rich Text
+            </>
+          )}
+        </button>
 
         <button
           onClick={toggleTheme}

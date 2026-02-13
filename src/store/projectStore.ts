@@ -9,6 +9,7 @@ interface ProjectStore extends EditorState {
   fileNavigationRequest: { fileId: string; line: number } | null;
   compilationMode: CompilationMode;
   settingsOpen: boolean;
+  editorMode: 'rich' | 'raw';
   setActiveFile: (id: string) => void;
   updateFileContent: (id: string, content: string) => void;
   toggleFolder: (id: string) => void;
@@ -18,6 +19,7 @@ interface ProjectStore extends EditorState {
   toggleDraftMode: () => void;
   setCompilationMode: (mode: CompilationMode) => void;
   toggleSettings: () => void;
+  toggleEditorMode: () => void;
   startCompilation: (forceRecompile?: boolean) => Promise<void>;
   createFile: (parentId: string, name: string, type: 'file' | 'folder') => void;
   deleteItem: (id: string) => void;
@@ -37,6 +39,7 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   fileNavigationRequest: null,
   compilationMode: 'api' as const, // Default to API for reliability
   settingsOpen: false,
+  editorMode: 'rich' as const,
 
   setActiveFile: (id) => set({ activeFileId: id }),
 
@@ -65,6 +68,10 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   setCompilationMode: (mode) => set({ compilationMode: mode }),
 
   toggleSettings: () => set((state) => ({ settingsOpen: !state.settingsOpen })),
+
+  toggleEditorMode: () => set((state) => ({
+    editorMode: state.editorMode === 'rich' ? 'raw' : 'rich'
+  })),
 
   startCompilation: async (forceRecompile = false) => {
     const { draftMode, compilationMode } = get();
