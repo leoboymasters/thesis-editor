@@ -4,7 +4,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorToolbar } from './EditorToolbar';
 import { useProjectStore } from '../../store/projectStore';
-import { FileText } from 'lucide-react';
+import { FileText, BookOpen } from 'lucide-react';
 
 const proseMirrorStyles = `
 .ProseMirror {
@@ -33,7 +33,7 @@ const proseMirrorStyles = `
 `;
 
 export const RichTextEditor: React.FC = () => {
-  const { files, activeFileId, updateFileContent } = useProjectStore();
+  const { files, activeFileId, updateFileContent, toggleTemplatePicker } = useProjectStore();
   const activeFile = activeFileId ? files[activeFileId] : null;
 
   const editor = useEditor({
@@ -77,9 +77,47 @@ export const RichTextEditor: React.FC = () => {
 
   if (!activeFile) {
     return (
-      <div className="h-full flex flex-col items-center justify-center text-muted gap-3">
-        <FileText className="w-12 h-12 opacity-30" />
-        <p className="text-sm">Select a file to start editing</p>
+      <div className="h-full flex flex-col items-center justify-center bg-background px-8">
+        <div className="max-w-md w-full">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shrink-0">
+              <BookOpen className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-semibold text-foreground">Welcome to ThesisFlow</h1>
+              <p className="text-sm text-muted">Write your thesis. No LaTeX required.</p>
+            </div>
+          </div>
+
+          {/* Steps */}
+          <div className="space-y-3 mb-8">
+            {[
+              { n: 1, title: 'Pick a template', desc: 'General University, IEEE, or APA — we set up the structure.' },
+              { n: 2, title: 'Write in rich text', desc: 'Bold, headings, lists — we generate the LaTeX.' },
+              { n: 3, title: 'Add citations', desc: 'Paste a DOI and we fill in the BibTeX entry.' },
+              { n: 4, title: 'Compile & preview', desc: 'Live PDF preview. Export .zip for Overleaf anytime.' },
+            ].map(({ n, title, desc }) => (
+              <div key={n} className="flex gap-3 p-3 rounded-lg border border-border bg-surface">
+                <span className="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  {n}
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-foreground">{title}</p>
+                  <p className="text-xs text-muted mt-0.5">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <button
+            onClick={toggleTemplatePicker}
+            className="w-full py-2.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            New Project →
+          </button>
+        </div>
       </div>
     );
   }
