@@ -1,9 +1,11 @@
 import { create } from 'zustand';
+import { subscribeWithSelector } from 'zustand/middleware';
 import { EditorState, FileSystemItem } from '../types';
 import { INITIAL_FILES } from '@/data/constants';
 import { compileProject, clearCompilationCache, CompilationMode } from '../lib/compiler';
 import { serializeFilesForCompilation } from '../lib/compilerSerializer';
 import { ThesisTemplate } from '../data/templates';
+import { persistFiles } from '../lib/persistence';
 
 interface ProjectStore extends EditorState {
   draftMode: boolean;
@@ -33,7 +35,8 @@ interface ProjectStore extends EditorState {
   importProject: (files: Record<string, FileSystemItem>) => void;
 }
 
-export const useProjectStore = create<ProjectStore>((set, get) => ({
+export const useProjectStore = create<ProjectStore>()(
+  subscribeWithSelector((set, get) => ({
   files: INITIAL_FILES,
   activeFileId: 'thesis-tex',
   isCompiling: false,
@@ -232,4 +235,17 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
       compilationResult: null
     });
   }
-}));
+})));
+
+const SAVE_DEBOUNCE_MS = 800;
+let saveTimer: ReturnType<typeof setTimeout> | null = null;
+
+useProjectStore.subscribe(
+  (state) => state.files,
+  (files) => {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      persistFiles(1, files).catch(console.error);
+    }, SAVE_DEBOUNCE_MS);
+  }
+);

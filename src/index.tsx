@@ -2,15 +2,29 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { loadFiles } from './lib/persistence';
+import { useProjectStore } from './store/projectStore';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const bootstrap = async () => {
+  try {
+    const files = await loadFiles(1);
+    if (Object.keys(files).length > 0) {
+      useProjectStore.setState({ files });
+    }
+  } catch {
+    // First run or IndexedDB unavailable — use INITIAL_FILES defaults
+  }
+};
+
+bootstrap().then(() => {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+});
