@@ -95,16 +95,6 @@ export const useProjectStore = create<ProjectStore>()(
       root: { id: 'root', name: 'root', type: 'folder', parentId: null, isExpanded: true },
     };
 
-    // Preamble as raw LaTeX (NOT Tiptap JSON)
-    newFiles['preamble'] = {
-      id: 'preamble',
-      name: 'preamble.tex',
-      type: 'file',
-      parentId: 'root',
-      content: template.preamble,
-      language: 'latex',
-    };
-
     // Section files as Tiptap JSON
     template.sections.forEach((section, i) => {
       const id = `section-${i}`;
@@ -117,6 +107,24 @@ export const useProjectStore = create<ProjectStore>()(
         language: 'latex',
       };
     });
+
+    // Main document that includes all sections
+    const inputStatements = template.sections.map(s => `\\input{${s.name.replace('.tex', '')}}`).join('\n');
+    
+    // Only include bibliography if biblatex is in preamble
+    const hasBiblatex = template.preamble.includes('biblatex');
+    const bibliographyCmd = hasBiblatex ? '\n\\printbibliography\n' : '';
+    
+    const mainContent = `${template.preamble}\n\n\\begin{document}\n\n${inputStatements}${bibliographyCmd}\n\\end{document}`;
+    
+    newFiles['main'] = {
+      id: 'main',
+      name: 'main.tex',
+      type: 'file',
+      parentId: 'root',
+      content: mainContent,
+      language: 'latex',
+    };
 
     // Empty references.bib
     newFiles['refs'] = {

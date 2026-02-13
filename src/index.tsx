@@ -16,8 +16,8 @@ const bootstrap = async () => {
     if (Object.keys(files).length > 0) {
       useProjectStore.setState({ files });
     }
-  } catch {
-    // First run or IndexedDB unavailable — use INITIAL_FILES defaults
+  } catch (err) {
+    console.error('[ThesisFlow] Failed to restore from IndexedDB:', err);
   }
 };
 

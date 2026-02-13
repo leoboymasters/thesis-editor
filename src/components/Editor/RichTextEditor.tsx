@@ -33,7 +33,7 @@ const proseMirrorStyles = `
 `;
 
 export const RichTextEditor: React.FC = () => {
-  const { files, activeFileId, updateFileContent, theme } = useProjectStore();
+  const { files, activeFileId, updateFileContent } = useProjectStore();
   const activeFile = activeFileId ? files[activeFileId] : null;
 
   const editor = useEditor({
@@ -73,7 +73,7 @@ export const RichTextEditor: React.FC = () => {
         editor.commands.setContent(stored, false);
       }
     }
-  }, [activeFileId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [activeFileId, editor]);
 
   if (!activeFile) {
     return (
@@ -87,7 +87,7 @@ export const RichTextEditor: React.FC = () => {
   return (
     <>
       <style>{proseMirrorStyles}</style>
-      <div className={`flex flex-col h-full ${theme}`}>
+      <div className="flex flex-col h-full">
         <EditorToolbar editor={editor} />
         <div className="flex-1 overflow-y-auto">
           <EditorContent editor={editor} className="h-full" />
