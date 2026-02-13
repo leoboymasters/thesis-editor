@@ -23,7 +23,7 @@ export const CitationModal: React.FC<Props> = ({ onClose }) => {
       const result = await lookupDoi(doi);
       setMeta(result);
     } catch (e) {
-      setError('DOI not found — please enter details manually.');
+      setError(e instanceof Error ? e.message : 'Lookup failed — check the DOI and try again.');
     } finally {
       setLoading(false);
     }

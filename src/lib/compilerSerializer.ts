@@ -1,5 +1,5 @@
 import { FileSystemItem } from '../types';
-import { jsonToLatex, TiptapNode } from './jsonToLatex';
+import { jsonToLatex, isArticleClass, TiptapNode } from './jsonToLatex';
 
 /**
  * Detects if a string is a Tiptap JSON document.
@@ -20,11 +20,17 @@ export const isTiptapJson = (content: string): boolean => {
 export const serializeFilesForCompilation = (
   files: Record<string, FileSystemItem>
 ): Record<string, FileSystemItem> => {
+  // Detect document class from main.tex to decide heading mapping
+  const mainTex = Object.values(files).find(
+    f => f.type === 'file' && f.name === 'main.tex' && f.content
+  );
+  const articleMode = mainTex ? isArticleClass(mainTex.content!) : false;
+
   const result: Record<string, FileSystemItem> = {};
   for (const [id, file] of Object.entries(files)) {
     if (file.type === 'file' && file.name.endsWith('.tex') && file.content && isTiptapJson(file.content)) {
       const doc = JSON.parse(file.content) as TiptapNode;
-      result[id] = { ...file, content: jsonToLatex(doc) };
+      result[id] = { ...file, content: jsonToLatex(doc, { articleMode }) };
     } else {
       result[id] = file;
     }

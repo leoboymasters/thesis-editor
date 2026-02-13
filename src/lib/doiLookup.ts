@@ -37,8 +37,8 @@ export const formatBibtexEntry = (meta: CitationMeta): string => {
 export const lookupDoi = async (doi: string): Promise<CitationMeta> => {
   const clean = doi.trim().replace(/^https?:\/\/doi\.org\//i, '');
   const url = `https://api.crossref.org/works/${encodeURIComponent(clean)}`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'ThesisFlow/1.0' } });
-  if (!res.ok) throw new Error(`DOI not found: ${doi}`);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`CrossRef returned ${res.status} for "${clean}"`);
   const json = await res.json();
   const w = json.message;
 

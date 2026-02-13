@@ -49,29 +49,24 @@ export const PdfViewer = () => {
   }
 
   if (!compilationResult.success) {
-    // ... (keep existing error code)
-    const isNetworkError = compilationResult.logs.some(l => l.includes('Network Error'));
+    const message = compilationResult.logs[0] ?? 'An unknown error occurred.';
+    const isNetwork = message.includes('internet connection') || message.includes('compilation server');
     return (
-      <div className="h-full bg-background p-8 overflow-auto">
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-          <div className="flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold mb-2">
-            <AlertCircle size={20} />
-            Compilation Failed
-          </div>
-          <pre className="text-xs font-mono text-red-800 dark:text-red-300 whitespace-pre-wrap">
-            {compilationResult.logs.join('\n')}
-          </pre>
-
-          {isNetworkError && (
-            <div className="mt-4 p-3 bg-panel rounded border border-border text-sm text-foreground">
-              <p className="font-semibold mb-1">Troubleshooting Tips:</p>
-              <ul className="list-disc list-inside space-y-1 text-muted">
-                <li>Check your internet connection.</li>
-                <li>Disable ad blockers or privacy extensions (e.g., uBlock, Privacy Badger) for this site.</li>
-                <li>The compilation service might be temporarily down.</li>
-              </ul>
+      <div className="h-full bg-background p-6 overflow-auto">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-5">
+          <div className="flex items-start gap-3">
+            <AlertCircle size={20} className="text-red-500 shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-red-700 dark:text-red-300 mb-1">Compilation failed</p>
+              <p className="text-sm text-red-800 dark:text-red-200">{message}</p>
+              {isNetwork && (
+                <ul className="mt-3 text-xs text-red-700 dark:text-red-300 space-y-1 list-disc list-inside">
+                  <li>Disable ad blockers or privacy extensions for this page</li>
+                  <li>The compilation service may be temporarily down — try again in a moment</li>
+                </ul>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     );

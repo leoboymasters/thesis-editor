@@ -13,12 +13,9 @@ export const TEMPLATES: ThesisTemplate[] = [
     description: 'Standard academic thesis format, works for most universities.',
     preamble: `\\documentclass[12pt,a4paper]{report}
 \\usepackage[margin=1in]{geometry}
-\\usepackage{times}
 \\usepackage{graphicx}
 \\usepackage{amsmath}
-\\usepackage{hyperref}
-\\usepackage[backend=biber,style=apa]{biblatex}
-\\addbibresource{references.bib}`,
+\\usepackage{hyperref}`,
     sections: [
       { name: 'abstract.tex', tiptapContent: { type: 'doc', content: [
         { type: 'heading', attrs: { level: 1 }, content: [{ type: 'text', text: 'Abstract' }] },
@@ -59,11 +56,9 @@ export const TEMPLATES: ThesisTemplate[] = [
     description: 'American Psychological Association 7th edition format.',
     preamble: `\\documentclass[12pt,a4paper]{article}
 \\usepackage[margin=1in]{geometry}
-\\usepackage{times}
 \\usepackage{setspace}
 \\doublespacing
-\\usepackage[backend=biber,style=apa]{biblatex}
-\\addbibresource{references.bib}`,
+\\usepackage{hyperref}`,
     sections: [
       { name: 'abstract.tex', tiptapContent: { type: 'doc', content: [
         { type: 'heading', attrs: { level: 2 }, content: [{ type: 'text', text: 'Abstract' }] },

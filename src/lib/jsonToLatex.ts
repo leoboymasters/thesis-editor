@@ -9,6 +9,8 @@ export interface TiptapNode {
 export interface SerializerOptions {
   wrapDocument?: boolean;
   preamble?: string;
+  /** When true, h1→\section instead of h1→\chapter (for article/IEEEtran classes) */
+  articleMode?: boolean;
 }
 
 const ESCAPE_MAP: Record<string, string> = {
@@ -51,6 +53,8 @@ const serializeInline = (node: TiptapNode): string => {
   return serializeNode(node);
 };
 
+let _articleMode = false;
+
 const serializeNode = (node: TiptapNode): string => {
   switch (node.type) {
     case 'doc':
@@ -64,10 +68,10 @@ const serializeNode = (node: TiptapNode): string => {
     case 'heading': {
       const level = (node.attrs?.level as number) ?? 1;
       const inner = (node.content ?? []).map(serializeInline).join('');
-      const cmd = level === 1 ? 'chapter'
-                : level === 2 ? 'section'
-                : level === 3 ? 'subsection'
-                : 'subsubsection';
+      const cmds = _articleMode
+        ? ['section', 'subsection', 'subsubsection', 'paragraph']
+        : ['chapter', 'section', 'subsection', 'subsubsection'];
+      const cmd = cmds[Math.min(level - 1, cmds.length - 1)];
       return `\\${cmd}{${inner}}`;
     }
 
@@ -107,7 +111,13 @@ const serializeNode = (node: TiptapNode): string => {
   }
 };
 
+// Document classes that do NOT support \chapter
+const ARTICLE_CLASSES = /\\documentclass(\[[^\]]*\])?\{(article|IEEEtran|scrartcl|amsart|beamer|standalone|acmart|elsarticle)\}/;
+
+export const isArticleClass = (preamble: string): boolean => ARTICLE_CLASSES.test(preamble);
+
 export const jsonToLatex = (doc: TiptapNode, options: SerializerOptions = {}): string => {
+  _articleMode = options.articleMode ?? false;
   const body = serializeNode(doc);
   if (!options.wrapDocument) return body;
   const preamble = options.preamble ?? '\\documentclass{article}';

@@ -202,7 +202,6 @@ const generateTocFile = (
         // Note: We don't want to modify ref based on basePath for root-level includes
         // The ref in main file is already relative to root (e.g., chapters/chapter1.tex)
         const file = pathToFile.get(ref) || pathToFile.get(ref.split('/').pop() || '');
-        console.log(`📝 TOC: Looking for "${ref}" - Found: ${!!file}`);
         if (file?.content) {
           processContent(file.content, ref);
         }
@@ -217,7 +216,6 @@ const generateTocFile = (
         subsectionNum = 0;
         pageNum += 2; // Rough estimate
         const title = chapterMatch[1];
-        console.log(`📕 TOC: Found chapter ${chapterNum}: "${title}"`);
         tocEntries.push(`\\contentsline {chapter}{\\numberline {${chapterNum}}${title}}{${pageNum}}{chapter.${chapterNum}}`);
         continue;
       }
@@ -420,7 +418,10 @@ const compileWithYtoTech = async (
     if (data.error && data.log_files) {
       const log = Object.values(data.log_files)[0] as string;
       const errorMatch = log.match(/! (.+?)(?:\n|$)/);
-      throw new Error(errorMatch?.[1] || data.error);
+      const lineMatch = log.match(/l\.(\d+)/);
+      let errorMsg = errorMatch?.[1] || data.error;
+      if (lineMatch) errorMsg += ` (line ${lineMatch[1]})`;
+      throw new Error(errorMsg);
     }
   } catch (e) {
     if (e instanceof Error) throw e;
@@ -602,9 +603,7 @@ export const compileProject = async (
   const { draftMode = false, onProgress, skipCache = false, compilationMode = 'api' } = options;
   const startTime = performance.now();
 
-  const modeLabel = compilationMode === 'local' ? 'LOCAL' : 'API';
-  console.log(`⚡ Compiling in ${draftMode ? 'DRAFT' : 'FULL'} mode using ${modeLabel}...`);
-  onProgress?.(`Starting ${draftMode ? 'draft' : 'full'} compilation (${modeLabel})...`);
+  onProgress?.(`Starting ${draftMode ? 'draft' : 'full'} compilation...`);
 
   // Find main tex file
   const mainTexFile = findMainTexFile(files);
@@ -635,8 +634,6 @@ export const compileProject = async (
 
     const cached = compilationCache.get(contentHash);
     if (cached && Date.now() - cached.timestamp < CACHE_MAX_AGE) {
-      const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
-      console.log(`✅ Cache hit! Returned in ${elapsed}s`);
       onProgress?.('Using cached PDF');
       return cached.url;
     }
@@ -742,9 +739,6 @@ export const compileProject = async (
     resources.push({ path: `${mainBasename}.lot`, content: lotContent });
   }
 
-  console.log(`📦 Sending ${resources.length} files (${imageCount} images, skipped ${skippedCount} unused)`);
-  console.log(`📋 TOC entries: ${tocContent.split('\n').filter(l => l.trim()).length}`);
-  console.log(`📁 Main file: ${mainTexFile.path}, Aux basename: ${mainBasename}`);
   onProgress?.(`Compiling ${resources.length} files...`);
 
   // Compile with pdflatex using selected mode
@@ -772,12 +766,9 @@ export const compileProject = async (
     }
 
     const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
-    console.log(`✅ Compilation succeeded in ${elapsed}s`);
     onProgress?.(`Done in ${elapsed}s`);
     return pdfUrl;
   } catch (error) {
-    const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
-    console.error(`❌ Compilation failed after ${elapsed}s:`, error);
     onProgress?.('Compilation failed');
     throw error;
   }
