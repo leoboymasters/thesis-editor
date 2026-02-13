@@ -11,27 +11,23 @@ export interface SerializerOptions {
   preamble?: string;
 }
 
-// Order matters: backslash must be escaped first
-const SPECIAL_CHARS: [RegExp, string][] = [
-  [/\\/g, '\\textbackslash{}'],
-  [/\{/g, '\\{'],
-  [/\}/g, '\\}'],
-  [/\$/g, '\\$'],
-  [/&/g, '\\&'],
-  [/%/g, '\\%'],
-  [/#/g, '\\#'],
-  [/_/g, '\\_'],
-  [/\^/g, '\\textasciicircum{}'],
-  [/~/g, '\\textasciitilde{}'],
-];
-
-const escapeLatex = (text: string): string => {
-  let result = text;
-  for (const [pattern, replacement] of SPECIAL_CHARS) {
-    result = result.replace(pattern, replacement);
-  }
-  return result;
+const ESCAPE_MAP: Record<string, string> = {
+  '\\': '\\textbackslash{}',
+  '{': '\\{',
+  '}': '\\}',
+  '$': '\\$',
+  '&': '\\&',
+  '%': '\\%',
+  '#': '\\#',
+  '_': '\\_',
+  '^': '\\textasciicircum{}',
+  '~': '\\textasciitilde{}',
 };
+
+const ESCAPE_PATTERN = /[\\{}\$&%#_^~]/g;
+
+const escapeLatex = (text: string): string =>
+  text.replace(ESCAPE_PATTERN, (ch) => ESCAPE_MAP[ch]);
 
 const applyMarks = (text: string, marks: TiptapNode['marks']): string => {
   if (!marks || marks.length === 0) return text;

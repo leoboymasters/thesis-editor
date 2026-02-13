@@ -107,4 +107,25 @@ describe('jsonToLatex', () => {
     expect(result).toContain('\\begin{document}');
     expect(result).toContain('\\end{document}');
   });
+
+  it('escapes backslash correctly', () => {
+    const doc = {
+      type: 'doc',
+      content: [{ type: 'paragraph', content: [{ type: 'text', text: 'a\\b' }] }],
+    };
+    const result = jsonToLatex(doc);
+    expect(result).toContain('a\\textbackslash{}b');
+    // Must NOT double-escape the braces
+    expect(result).not.toContain('\\textbackslash\\{\\}');
+  });
+
+  it('escapes caret correctly', () => {
+    const doc = {
+      type: 'doc',
+      content: [{ type: 'paragraph', content: [{ type: 'text', text: 'a^b' }] }],
+    };
+    const result = jsonToLatex(doc);
+    expect(result).toContain('\\textasciicircum{}');
+    expect(result).not.toContain('\\textasciicircum\\{\\}');
+  });
 });
