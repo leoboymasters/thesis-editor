@@ -5,10 +5,11 @@ import { SettingsModal } from './components/Layout/SettingsModal';
 import { CodeEditor } from './components/Editor/CodeEditor';
 import { RichTextEditor } from './components/Editor/RichTextEditor';
 import { PdfViewer } from './components/Preview/PdfViewer';
+import { TemplatePickerModal } from './components/Templates/TemplatePickerModal';
 import { useProjectStore } from './store/projectStore';
 
 const App = () => {
-  const { sidebarVisible, previewVisible, theme, editorMode } = useProjectStore();
+  const { sidebarVisible, previewVisible, theme, editorMode, templatePickerOpen, toggleTemplatePicker } = useProjectStore();
 
   return (
     <div className={`${theme} flex flex-col h-screen w-screen bg-background text-foreground overflow-hidden`}>
@@ -55,6 +56,9 @@ const App = () => {
 
       {/* Settings Modal */}
       <SettingsModal />
+
+      {/* Template Picker Modal */}
+      {templatePickerOpen && <TemplatePickerModal onClose={toggleTemplatePicker} />}
     </div>
   );
 };

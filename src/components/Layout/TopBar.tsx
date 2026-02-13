@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type } from 'lucide-react';
+import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus } from 'lucide-react';
 import { useProjectStore } from '../../store/projectStore';
 
 export const TopBar = () => {
@@ -21,6 +21,7 @@ export const TopBar = () => {
     compilationMode,
     editorMode,
     toggleEditorMode,
+    toggleTemplatePicker,
   } = useProjectStore();
 
   const activeFile = activeFileId ? files[activeFileId] : null;
@@ -43,6 +44,15 @@ export const TopBar = () => {
           title="Toggle Sidebar"
         >
           {sidebarVisible ? <PanelLeftClose size={18} /> : <PanelLeft size={18} />}
+        </button>
+
+        <button
+          onClick={toggleTemplatePicker}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted hover:bg-surface hover:text-foreground transition-colors"
+          title="New Project from Template"
+        >
+          <Plus size={14} />
+          New Project
         </button>
       </div>
 

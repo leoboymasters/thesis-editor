@@ -3,6 +3,7 @@ import { EditorState, FileSystemItem } from '../types';
 import { INITIAL_FILES } from '@/data/constants';
 import { compileProject, clearCompilationCache, CompilationMode } from '../lib/compiler';
 import { serializeFilesForCompilation } from '../lib/compilerSerializer';
+import { ThesisTemplate } from '../data/templates';
 
 interface ProjectStore extends EditorState {
   draftMode: boolean;
@@ -11,6 +12,9 @@ interface ProjectStore extends EditorState {
   compilationMode: CompilationMode;
   settingsOpen: boolean;
   editorMode: 'rich' | 'raw';
+  templatePickerOpen: boolean;
+  toggleTemplatePicker: () => void;
+  loadTemplate: (template: ThesisTemplate) => void;
   setActiveFile: (id: string) => void;
   updateFileContent: (id: string, content: string) => void;
   toggleFolder: (id: string) => void;
@@ -41,6 +45,7 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   compilationMode: 'api' as const, // Default to API for reliability
   settingsOpen: false,
   editorMode: 'rich' as const,
+  templatePickerOpen: false,
 
   setActiveFile: (id) => set({ activeFileId: id }),
 
@@ -73,6 +78,50 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
   toggleEditorMode: () => set((state) => ({
     editorMode: state.editorMode === 'rich' ? 'raw' : 'rich'
   })),
+
+  toggleTemplatePicker: () => set((state) => ({ templatePickerOpen: !state.templatePickerOpen })),
+
+  loadTemplate: (template) => {
+    clearCompilationCache();
+    const newFiles: Record<string, FileSystemItem> = {
+      root: { id: 'root', name: 'root', type: 'folder', parentId: null, isExpanded: true },
+    };
+
+    // Preamble as raw LaTeX (NOT Tiptap JSON)
+    newFiles['preamble'] = {
+      id: 'preamble',
+      name: 'preamble.tex',
+      type: 'file',
+      parentId: 'root',
+      content: template.preamble,
+      language: 'latex',
+    };
+
+    // Section files as Tiptap JSON
+    template.sections.forEach((section, i) => {
+      const id = `section-${i}`;
+      newFiles[id] = {
+        id,
+        name: section.name,
+        type: 'file',
+        parentId: 'root',
+        content: JSON.stringify(section.tiptapContent),
+        language: 'latex',
+      };
+    });
+
+    // Empty references.bib
+    newFiles['refs'] = {
+      id: 'refs', name: 'references.bib', type: 'file',
+      parentId: 'root', content: '', language: 'bibtex'
+    };
+
+    set({
+      files: newFiles,
+      activeFileId: 'section-0',
+      compilationResult: null,
+    });
+  },
 
   startCompilation: async (forceRecompile = false) => {
     const { draftMode, compilationMode } = get();
