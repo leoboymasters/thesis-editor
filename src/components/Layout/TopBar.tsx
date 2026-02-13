@@ -1,6 +1,7 @@
 import React from 'react';
-import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus, BookMarked } from 'lucide-react';
+import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus, BookMarked, Download } from 'lucide-react';
 import { useProjectStore } from '../../store/projectStore';
+import { exportProjectZip } from '../../lib/exportZip';
 
 export const TopBar = () => {
   const {
@@ -159,6 +160,16 @@ export const TopBar = () => {
               Compile
             </>
           )}
+        </button>
+
+        {/* Export .zip Button */}
+        <button
+          onClick={() => exportProjectZip(files)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted hover:bg-surface hover:text-foreground transition-colors"
+          title="Export project as .zip for Overleaf"
+        >
+          <Download size={14} />
+          Export .zip
         </button>
 
         <button
