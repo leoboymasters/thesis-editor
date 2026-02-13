@@ -52,13 +52,15 @@ export const lookupDoi = async (doi: string): Promise<CitationMeta> => {
              : w.type === 'proceedings-article' ? 'inproceedings'
              : 'misc';
 
+  const containerTitle = w['container-title']?.[0];
   return {
     key,
     type,
     title: w.title?.[0],
     author: authors,
     year,
-    journal: w['container-title']?.[0],
+    journal: type === 'article' ? containerTitle : undefined,
+    booktitle: type === 'inproceedings' ? containerTitle : undefined,
     volume: w.volume,
     number: w.issue,
     pages: w.page,

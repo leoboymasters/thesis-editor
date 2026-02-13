@@ -4,7 +4,7 @@ import { jsonToLatex, TiptapNode } from './jsonToLatex';
 /**
  * Detects if a string is a Tiptap JSON document.
  */
-const isTiptapJson = (content: string): boolean => {
+export const isTiptapJson = (content: string): boolean => {
   try {
     const parsed = JSON.parse(content);
     return parsed?.type === 'doc' && Array.isArray(parsed?.content);

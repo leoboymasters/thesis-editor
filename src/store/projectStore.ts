@@ -3,7 +3,7 @@ import { subscribeWithSelector } from 'zustand/middleware';
 import { EditorState, FileSystemItem } from '../types';
 import { INITIAL_FILES } from '@/data/constants';
 import { compileProject, clearCompilationCache, CompilationMode } from '../lib/compiler';
-import { serializeFilesForCompilation } from '../lib/compilerSerializer';
+import { serializeFilesForCompilation, isTiptapJson } from '../lib/compilerSerializer';
 import { ThesisTemplate } from '../data/templates';
 import { persistFiles } from '../lib/persistence';
 
@@ -53,7 +53,13 @@ export const useProjectStore = create<ProjectStore>()(
   templatePickerOpen: false,
   citationModalOpen: false,
 
-  setActiveFile: (id) => set({ activeFileId: id }),
+  setActiveFile: (id) => set((state) => {
+    const file = state.files[id];
+    const content = file?.content ?? '';
+    // Raw LaTeX files (non-Tiptap, non-empty) should open in code editor
+    const isRaw = content.length > 0 && !isTiptapJson(content);
+    return { activeFileId: id, editorMode: isRaw ? 'raw' : 'rich' };
+  }),
 
   updateFileContent: (id, content) => set((state) => ({
     files: {
