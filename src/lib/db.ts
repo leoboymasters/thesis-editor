@@ -20,6 +20,8 @@ export interface DBFile {
   parentFolderId?: number | null;
   language?: string;
   isExpanded?: boolean;
+  originalId?: string;
+  originalParentId?: string | null;
 }
 
 export interface Asset {

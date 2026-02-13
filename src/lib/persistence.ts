@@ -17,6 +17,8 @@ export const persistFiles = async (
       parentFolderId: null,
       language: f.language,
       isExpanded: f.isExpanded,
+      originalId: f.id,
+      originalParentId: f.parentId,
     }));
     if (rows.length > 0) {
       await db.files.bulkAdd(rows);
@@ -32,12 +34,12 @@ export const loadFiles = async (
   if (rows.length === 0) return {};
   const files: Record<string, FileSystemItem> = {};
   for (const row of rows) {
-    const id = String(row.id!);
+    const id = row.originalId ?? String(row.id!);
     files[id] = {
       id,
       name: row.name,
       type: row.type as 'file' | 'folder',
-      parentId: null,
+      parentId: row.originalParentId ?? null,
       content: row.content,
       language: row.language,
       isExpanded: row.isExpanded,
