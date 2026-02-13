@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { EditorState, FileSystemItem } from '../types';
 import { INITIAL_FILES } from '@/data/constants';
 import { compileProject, clearCompilationCache, CompilationMode } from '../lib/compiler';
+import { serializeFilesForCompilation } from '../lib/compilerSerializer';
 
 interface ProjectStore extends EditorState {
   draftMode: boolean;
@@ -79,7 +80,8 @@ export const useProjectStore = create<ProjectStore>((set, get) => ({
 
     try {
       const { files, activeFileId } = get();
-      const pdfUrl = await compileProject(files, activeFileId, {
+      const serializedFiles = serializeFilesForCompilation(files);
+      const pdfUrl = await compileProject(serializedFiles, activeFileId, {
         draftMode,
         skipCache: forceRecompile,
         compilationMode,
