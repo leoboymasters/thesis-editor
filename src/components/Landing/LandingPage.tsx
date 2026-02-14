@@ -133,7 +133,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLogin, onRequestDemo
             <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground shadow-sm group-hover:scale-105 transition-transform">
               <span className="font-serif font-bold italic text-xl leading-none">R</span>
             </div>
-            <span className="font-bold text-lg tracking-tight">researchere</span>
+            <span className="font-bold text-lg tracking-tight">Researchere</span>
           </a>
 
           {/* Nav */}
@@ -350,7 +350,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLogin, onRequestDemo
                 <div className="w-8 h-8 rounded bg-primary flex items-center justify-center text-primary-foreground">
                   <span className="font-serif font-bold italic text-lg leading-none">R</span>
                 </div>
-                <span className="font-bold text-lg">researchere</span>
+                <span className="font-bold text-lg">Researchere</span>
               </a>
               <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
                 Empowering the next generation of scientists and thinkers with tools that foster clarity, collaboration, and discovery.

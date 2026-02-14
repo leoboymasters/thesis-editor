@@ -31,13 +31,13 @@ export interface Asset {
   blob: Blob;
 }
 
-export class ThesisDB extends Dexie {
+export class ResearchereDB extends Dexie {
   projects!: Table<Project, number>;
   files!: Table<DBFile, number>;
   assets!: Table<Asset, number>;
 
   constructor() {
-    super('ThesisFlowDB');
+    super('ResearchereDB');
     this.version(1).stores({
       projects: '++id, title, templateId, lastModified',
       files: '++id, projectId, name, type, parentFolderId',
@@ -46,4 +46,4 @@ export class ThesisDB extends Dexie {
   }
 }
 
-export const db = new ThesisDB();
+export const db = new ResearchereDB();

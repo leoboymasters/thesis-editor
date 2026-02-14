@@ -26,24 +26,26 @@ const App = () => {
           <Sidebar />
         </div>
         <div className="flex-1 flex min-w-0 bg-background">
-          <div className="flex-1 flex flex-col min-w-0">
+          <div className={`flex-1 flex flex-col min-w-0 ${previewVisible ? 'border-r border-border' : ''}`}>
             {editorMode === 'rich' ? <RichTextEditor /> : <CodeEditor />}
           </div>
           {previewVisible && (
-            <div className="w-[45%] border-l border-border shrink-0 bg-background">
-              <PdfViewer />
+            <div className="w-[45%] min-w-[320px] shrink-0 flex items-stretch p-3 pl-2">
+              <div className="flex-1 rounded-xl border border-border bg-background shadow-lg overflow-hidden flex flex-col min-h-0">
+                <PdfViewer />
+              </div>
             </div>
           )}
         </div>
       </main>
-      <footer className="h-6 bg-primary text-white text-[10px] px-3 flex items-center justify-between shrink-0">
-        <div className="flex gap-4">
+      <footer className="h-6 border-t border-border bg-panel text-muted-foreground text-[10px] px-3 flex items-center justify-between shrink-0">
+        <div className="flex gap-3">
           <span>Ready</span>
           <span>Ln 12, Col 45</span>
           <span>UTF-8</span>
           <span>LaTeX</span>
         </div>
-        <div><span>{theme === 'dark' ? 'Tokyo Night' : 'Tokyo Night Light'}</span></div>
+        <span>{theme === 'dark' ? 'Tokyo Night' : 'Tokyo Night Light'}</span>
       </footer>
       <SettingsModal />
       <TemplatePickerModal />
@@ -62,7 +64,7 @@ const App = () => {
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-center bg-white text-slate-900">
         <Loader2 className="w-10 h-10 animate-spin text-primary mb-4" />
-        <p className="text-slate-500 animate-pulse">Initializing session...</p>
+        <p className="text-slate-500 animate-pulse">Thanks for doing your research here</p>
       </div>
     );
   }

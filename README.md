@@ -1,8 +1,8 @@
-# ThesisFlow
+# Researchere
 
 Write your thesis in rich text. We handle the LaTeX.
 
-ThesisFlow is a local-first web application that lets you write academic documents in a word-processor-style editor while generating valid LaTeX behind the scenes. Pick a template, write your sections in bold and headings, look up citations by DOI, compile to PDF, and export a `.zip` ready for Overleaf — all without touching a LaTeX file.
+Researchere is web application that lets you write academic documents in a word-processor-style editor while generating valid LaTeX behind the scenes. Pick a template, write your sections in bold and headings, look up citations by DOI, compile to PDF, and export a `.zip` ready for Overleaf — all without touching a LaTeX file.
 
 ---
 
@@ -24,8 +24,8 @@ ThesisFlow is a local-first web application that lets you write academic documen
 **Prerequisites:** [Bun](https://bun.sh/) (recommended) or Node.js 18+.
 
 ```bash
-git clone https://github.com/leoboymasters/thesis-editor.git
-cd thesis-editor
+git clone https://github.com/leoboymasters/researchere.git
+cd researchere
 bun install
 bun run dev
 ```

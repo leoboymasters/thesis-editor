@@ -65,7 +65,7 @@ const FileTreeItem: React.FC<{ item: FileSystemItem, depth?: number }> = ({ item
     <div>
       <div
         className={`
-          flex items-center gap-2 py-1.5 pr-2 cursor-pointer select-none text-sm
+          flex items-center gap-2 py-2 pr-2 cursor-pointer select-none text-[13px]
           hover:bg-surface
           ${isActive ? 'bg-surface text-primary font-medium' : 'text-muted-foreground'}
         `}
@@ -132,20 +132,20 @@ export const Sidebar = () => {
 
   return (
     <div className="h-full flex flex-col bg-panel border-r border-border">
-      <div className="p-4 border-b border-border flex items-center justify-between">
-        <h2 className="font-semibold text-foreground text-xs uppercase tracking-wider">Project Files</h2>
-        <div className="flex gap-1">
+      <div className="h-9 px-3 border-b border-border flex items-center justify-between shrink-0">
+        <h2 className="font-medium text-muted-foreground text-[11px] uppercase tracking-widest">Project Files</h2>
+        <div className="flex gap-0.5">
           <Button
             variant="ghost"
             size="icon"
             onClick={handleUploadClick}
-            className="h-8 w-8 text-muted-foreground"
+            className="h-7 w-7 text-muted-foreground"
             title="Import ZIP Project"
           >
-            <Upload size={14} />
+            <Upload size={13} />
           </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground" title="Add File">
-            <Plus size={14} />
+          <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground" title="Add File">
+            <Plus size={13} />
           </Button>
           <input
             type="file"
@@ -163,31 +163,31 @@ export const Sidebar = () => {
         ))}
       </div>
 
-      <div className="p-3 border-t border-border flex flex-col gap-2">
+      <div className="px-2 py-2 border-t border-border flex flex-col gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
               className={cn(
-                'w-full flex items-center gap-3 rounded-lg p-2.5 text-left',
+                'w-full flex items-center gap-2 rounded-md p-1.5 text-left',
                 'bg-muted/60 hover:bg-muted transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring'
               )}
               title="Account menu"
             >
-              <Avatar className="h-9 w-9 shrink-0 rounded-full">
+              <Avatar className="h-7 w-7 shrink-0 rounded-full">
                 <AvatarImage src={user?.user_metadata?.avatar_url} alt={user?.email ?? ''} />
-                <AvatarFallback className="bg-primary/10 text-primary text-xs">
+                <AvatarFallback className="bg-primary/10 text-primary text-[10px]">
                   {(user?.email?.slice(0, 2) ?? '?').toUpperCase()}
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground truncate">
+                <p className="text-xs font-medium text-foreground truncate">
                   {user?.user_metadata?.full_name ?? user?.email?.split('@')[0] ?? 'User'}
                 </p>
-                <p className="text-xs text-muted-foreground truncate">
+                <p className="text-[10px] text-muted-foreground truncate">
                   {user?.email ?? '—'}
                 </p>
               </div>
-              <MoreVertical className="h-4 w-4 shrink-0 text-muted-foreground" />
+              <MoreVertical className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" side="top" className="w-56">
@@ -232,7 +232,6 @@ export const Sidebar = () => {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <p className="text-xs text-muted-foreground px-1">ThesisFlow v1.0</p>
       </div>
     </div>
   );

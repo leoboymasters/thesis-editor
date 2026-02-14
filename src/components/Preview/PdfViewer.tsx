@@ -22,7 +22,7 @@ const getProgressPercent = (progress: string | null): number => {
 };
 
 export const PdfViewer = () => {
-  const { isCompiling, compilationResult, compileProgress } = useProjectStore();
+  const { isCompiling, compilationResult, compileProgress, startCompilation } = useProjectStore();
   const [showStructure, setShowStructure] = React.useState(false);
 
   if (isCompiling) {
@@ -41,12 +41,12 @@ export const PdfViewer = () => {
   }
 
   if (!compilationResult) {
-    // ... (keep existing no-result code)
     return (
-      <div className="h-full flex flex-col items-center justify-center bg-background text-center p-8">
-        <div className="w-16 h-20 border-2 border-dashed border-border rounded mb-4 mx-auto opacity-60"></div>
-        <p className="font-medium text-foreground">No compiled document yet</p>
-        <p className="text-sm mt-2 text-foreground/85">Click <span className="text-primary font-medium">"Compile"</span> to generate the PDF</p>
+      <div className="h-full flex flex-col items-center justify-center bg-background text-center px-6 py-8">
+        <p className="text-[13px] text-muted-foreground">No compiled document yet.</p>
+        <p className="text-[11px] mt-1 text-muted-foreground/80">
+          Click <button type="button" onClick={() => startCompilation()} className="text-primary hover:underline font-medium">Compile</button> in the toolbar to generate the PDF.
+        </p>
       </div>
     );
   }
@@ -73,27 +73,25 @@ export const PdfViewer = () => {
   }
 
   return (
-    <div className="h-full flex flex-col bg-surface overflow-hidden">
-      <div className="h-10 bg-panel border-b border-border flex items-center justify-between px-4 shadow-sm z-10 shrink-0">
-        <div className="flex items-center gap-3">
-          <span className="text-xs font-semibold text-muted-foreground uppercase">Preview</span>
+    <div className="h-full flex flex-col bg-surface overflow-hidden rounded-xl">
+      <div className="h-9 rounded-t-xl bg-panel border-b border-border flex items-center justify-between px-3 z-10 shrink-0">
+        <div className="flex items-center gap-1">
+          <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-widest">Preview</span>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setShowStructure(!showStructure)}
-            className={cn('h-8 w-8', showStructure && 'text-primary bg-surface')}
+            className={cn('h-7 w-7', showStructure && 'text-primary bg-surface')}
             title="Toggle Document Outline"
           >
-            <List size={16} />
+            <List size={14} />
           </Button>
         </div>
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" asChild className="gap-1 text-muted-foreground hover:text-primary h-8">
-            <a href={compilationResult.pdfUrl} download="thesis.pdf">
-              <Download size={14} /> Download
-            </a>
-          </Button>
-        </div>
+        <Button variant="ghost" size="sm" asChild className="gap-1 text-muted-foreground hover:text-primary h-7 text-xs">
+          <a href={compilationResult.pdfUrl} download="research.pdf">
+            <Download size={13} /> Download
+          </a>
+        </Button>
       </div>
 
       <div className="flex-1 flex relative h-full overflow-hidden">
@@ -108,7 +106,7 @@ export const PdfViewer = () => {
               <p className="mb-2">This browser does not support inline PDFs.</p>
               <a
                 href={compilationResult.pdfUrl}
-                download="thesis.pdf"
+                download="research.pdf"
                 className="text-primary hover:underline"
               >
                 Download PDF to view

@@ -186,7 +186,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onBack }) => {
       </Card>
       
       <div className="absolute bottom-4 text-xs text-muted-foreground text-center">
-        Powered by researchere
+        Powered by Researchere
       </div>
     </div>
   );

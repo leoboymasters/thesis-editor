@@ -29,9 +29,9 @@ export default defineConfig(({ mode }) => {
           ],
         },
         manifest: {
-          name: 'ThesisFlow',
-          short_name: 'ThesisFlow',
-          description: 'Write your thesis without touching LaTeX',
+          name: 'Researchere',
+          short_name: 'Researchere',
+          description: 'Write your research without touching LaTeX',
           theme_color: '#7c3aed',
           background_color: '#ffffff',
           display: 'standalone',

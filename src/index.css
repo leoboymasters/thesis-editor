@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* ThesisFlow - Neutral Base with Green Accents */
+    /* Researchere - Neutral Base with Green Accents */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     
@@ -14,8 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
     
-    /* Primary: Persian Green (#00ac8c) */
-    --primary: 169 100% 34%;
+    /* Primary: softer teal */
+    --primary: 169 70% 38%;
     --primary-foreground: 0 0% 100%;
     
     /* Secondary: Neutral Slate */
@@ -35,8 +35,8 @@
     
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 169 100% 34%;
-    --radius: 0.5rem;
+    --ring: 169 70% 38%;
+    --radius: 0.375rem;
 
     /* Legacy/App specific - Neutral */
     --bg-app: #ffffff;
@@ -48,7 +48,7 @@
   }
 
   .dark {
-    /* ThesisFlow - Dark Neutral with Green Accents */
+    /* Researchere - Dark Neutral with Green Accents */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     
@@ -58,8 +58,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
     
-    /* Primary: Lighter Green for dark mode */
-    --primary: 169 100% 45%;
+    /* Primary: softer teal for dark mode */
+    --primary: 169 80% 48%;
     --primary-foreground: 169 100% 10%;
     
     --secondary: 217.2 32.6% 17.5%;
@@ -76,7 +76,7 @@
     
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 169 100% 45%;
+    --ring: 169 80% 48%;
 
     --bg-app: #030712; /* Slate 950 */
     --bg-panel: #0f172a; /* Slate 900 */

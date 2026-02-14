@@ -39,7 +39,7 @@ export const RichTextEditor: React.FC = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      Placeholder.configure({ placeholder: 'Start writing your thesis...' }),
+      Placeholder.configure({ placeholder: 'Start writing your research...' }),
     ],
     content: (() => {
       if (!activeFile?.content) return '';
@@ -85,8 +85,8 @@ export const RichTextEditor: React.FC = () => {
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-foreground">Welcome to ThesisFlow</h1>
-              <p className="text-sm text-muted-foreground">Write your thesis. No LaTeX required.</p>
+              <h1 className="text-xl font-bold text-foreground">Welcome to Researchere</h1>
+              <p className="text-sm text-muted-foreground">Write your research. No LaTeX required.</p>
             </div>
           </div>
 

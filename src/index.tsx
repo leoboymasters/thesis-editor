@@ -19,7 +19,7 @@ const bootstrap = async () => {
       useProjectStore.setState({ files });
     }
   } catch (err) {
-    console.error('[ThesisFlow] Failed to restore from IndexedDB:', err);
+    console.error('[Researchere] Failed to restore from IndexedDB:', err);
   }
 };
 
