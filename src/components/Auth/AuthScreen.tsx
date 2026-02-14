@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useAuthStore } from '../../store/authStore';
 import { Loader2 } from 'lucide-react';
@@ -8,7 +9,11 @@ import { Label } from '../ui/label';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../ui/card';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 
-export const AuthScreen = () => {
+interface AuthScreenProps {
+  onBack?: () => void;
+}
+
+export const AuthScreen: React.FC<AuthScreenProps> = ({ onBack }) => {
   const { error: globalError, clearError, signInWithGoogle } = useAuthStore();
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');
@@ -69,7 +74,18 @@ export const AuthScreen = () => {
   };
 
   return (
-    <div className="min-h-screen grid place-items-center bg-gray-50 p-4">
+    <div className="min-h-screen grid place-items-center bg-background p-4 relative">
+      {onBack && (
+        <Button
+          variant="ghost"
+          size="sm"
+          className="absolute top-4 left-4 gap-1.5 text-muted-foreground"
+          onClick={onBack}
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to home
+        </Button>
+      )}
       <Card className="w-full max-w-[400px] shadow-lg">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
@@ -169,8 +185,8 @@ export const AuthScreen = () => {
         </CardFooter>
       </Card>
       
-      <div className="absolute bottom-4 text-xs text-gray-400 text-center">
-        Powered by Thesis Editor
+      <div className="absolute bottom-4 text-xs text-muted-foreground text-center">
+        Powered by researchere
       </div>
     </div>
   );

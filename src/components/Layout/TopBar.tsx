@@ -1,12 +1,11 @@
 import React from 'react';
 import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus, BookMarked, Download } from 'lucide-react';
 import { useProjectStore } from '../../store/projectStore';
-import { useAuthStore } from '../../store/authStore';
 import { exportProjectZip } from '../../lib/exportZip';
-import { LogOut, User as UserIcon } from 'lucide-react';
+import { Button } from '../ui/button';
+import { cn } from '../../lib/utils';
 
 export const TopBar = () => {
-  const { user, signOut } = useAuthStore();
   const {
     startCompilation,
     isCompiling,
@@ -36,42 +35,47 @@ export const TopBar = () => {
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2 text-foreground font-semibold tracking-tight">
           <div className="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
-            <span className="font-serif font-bold italic">Tx</span>
+            <span className="font-serif font-bold italic">Tf</span>
           </div>
-          <span>Thesis<span className="font-light text-muted-foreground">Editor</span></span>
+          <span>Thesis<span className="font-light text-muted-foreground">Flow</span></span>
         </div>
 
-        <div className="h-6 w-px bg-border mx-2"></div>
+        <div className="h-6 w-px bg-border mx-2" />
 
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={toggleSidebar}
-          className={`p-2 rounded-md ${!sidebarVisible ? 'bg-surface text-foreground' : 'text-muted-foreground hover:bg-surface'}`}
           title="Toggle Sidebar"
+          className={cn(!sidebarVisible && 'bg-surface text-foreground')}
         >
           {sidebarVisible ? <PanelLeftClose size={18} /> : <PanelLeft size={18} />}
-        </button>
+        </Button>
 
-        <button
+        <Button
+          variant="ghost"
+          size="sm"
           onClick={toggleTemplatePicker}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-surface hover:text-foreground transition-colors"
           title="New Project from Template"
+          className="gap-1.5 text-muted-foreground hover:text-foreground h-8"
         >
           <Plus size={14} />
           New Project
-        </button>
+        </Button>
 
-        <button
+        <Button
+          variant="ghost"
+          size="sm"
           onClick={toggleCitationModal}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-surface hover:text-foreground transition-colors"
           title="Add Citation"
+          className="gap-1.5 text-muted-foreground hover:text-foreground h-8"
         >
           <BookMarked size={14} />
           Cite
-        </button>
+        </Button>
       </div>
 
       <div className="flex items-center gap-3">
-        {/* Status indicator */}
         <div className="text-xs text-muted-foreground mr-4 hidden md:block">
           {isCompiling && compileProgress ? (
             <span className="text-primary font-medium animate-pulse">{compileProgress}</span>
@@ -84,15 +88,12 @@ export const TopBar = () => {
           )}
         </div>
 
-        {/* Editor Mode Toggle */}
-        <button
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={toggleEditorMode}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-            editorMode === 'rich'
-              ? 'bg-surface text-foreground'
-              : 'bg-surface text-foreground'
-          } hover:bg-border`}
           title={editorMode === 'rich' ? 'Switch to Raw LaTeX' : 'Switch to Rich Text'}
+          className="gap-1.5 h-8"
         >
           {editorMode === 'rich' ? (
             <>
@@ -105,28 +106,29 @@ export const TopBar = () => {
               Rich Text
             </>
           )}
-        </button>
+        </Button>
 
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={toggleTheme}
-          className="p-2 text-muted-foreground hover:bg-surface rounded-md"
           title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
         >
           {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+        </Button>
 
-        {/* Draft Mode Toggle */}
-        <button
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={toggleDraftMode}
           disabled={isCompiling}
-          className={`
-            flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors
-            ${isCompiling ? 'opacity-50 cursor-not-allowed' : ''}
-            ${draftMode
-              ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
-              : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'}
-          `}
           title={draftMode ? 'Draft mode: Fast compilation without images' : 'Full mode: Complete compilation with images'}
+          className={cn(
+            'gap-1.5 h-8',
+            draftMode
+              ? 'bg-amber-100 text-amber-700 hover:bg-amber-100/90 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/40'
+              : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-100/90 dark:bg-emerald-900/30 dark:text-emerald-400 dark:hover:bg-emerald-900/40'
+          )}
         >
           {draftMode ? (
             <>
@@ -139,18 +141,13 @@ export const TopBar = () => {
               Full
             </>
           )}
-        </button>
+        </Button>
 
-        {/* Compile Button */}
-        <button
+        <Button
           onClick={() => startCompilation()}
           disabled={isCompiling}
-          className={`
-            flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm min-w-[120px] justify-center
-            ${isCompiling
-              ? 'bg-surface text-muted-foreground cursor-not-allowed'
-              : 'bg-primary text-white hover:opacity-90 hover:shadow-md active:scale-95'}
-          `}
+          size="sm"
+          className="gap-2 rounded-full min-w-[120px] h-9"
         >
           {isCompiling ? (
             <>
@@ -163,58 +160,44 @@ export const TopBar = () => {
               Compile
             </>
           )}
-        </button>
+        </Button>
 
-        {/* Export .zip Button */}
-        <button
+        <Button
+          variant="ghost"
+          size="sm"
           onClick={() => exportProjectZip(files)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-surface hover:text-foreground transition-colors"
           title="Export project as .zip for Overleaf"
+          className="gap-1.5 text-muted-foreground hover:text-foreground h-8"
         >
           <Download size={14} />
           Export .zip
-        </button>
+        </Button>
 
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={togglePreview}
-          className={`p-2 rounded-md ${!previewVisible ? 'text-muted-foreground' : 'text-primary bg-surface'}`}
           title="Toggle Preview"
+          className={cn(previewVisible && 'text-primary bg-surface')}
         >
           <MonitorPlay size={18} />
-        </button>
+        </Button>
 
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={toggleSettings}
-          className="p-2 text-muted-foreground hover:bg-surface rounded-md relative"
           title={`Settings (Current: ${compilationMode === 'local' ? 'Local WASM' : 'Cloud API'})`}
+          className="relative"
         >
           <Settings size={18} />
-          {/* Small indicator dot for compilation mode */}
-          <span className={`
-            absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border border-panel
-            ${compilationMode === 'local'
-              ? 'bg-amber-500'
-              : 'bg-emerald-500'}
-          `} />
-        </button>
-
-        <div className="h-6 w-px bg-border mx-1"></div>
-
-        <div className="flex items-center gap-2 pl-2">
-          <div className="flex flex-col items-end hidden lg:flex">
-            <span className="text-[10px] text-muted-foreground leading-tight">Logged in as</span>
-            <span className="text-xs font-medium text-foreground leading-tight truncate max-w-[120px]">
-              {user?.email?.split('@')[0]}
-            </span>
-          </div>
-          <button
-            onClick={() => signOut()}
-            className="p-2 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-md transition-colors"
-            title="Sign Out"
-          >
-            <LogOut size={18} />
-          </button>
-        </div>
+          <span
+            className={cn(
+              'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border border-panel',
+              compilationMode === 'local' ? 'bg-amber-500' : 'bg-emerald-500'
+            )}
+          />
+        </Button>
       </div>
     </header>
   );

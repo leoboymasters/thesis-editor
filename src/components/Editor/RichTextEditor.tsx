@@ -66,11 +66,11 @@ export const RichTextEditor: React.FC = () => {
       const json = JSON.parse(stored);
       const current = JSON.stringify(editor.getJSON());
       if (JSON.stringify(json) !== current) {
-        editor.commands.setContent(json, false);
+        editor.commands.setContent(json);
       }
     } catch {
       if (editor.getText() !== stored) {
-        editor.commands.setContent(stored, false);
+        editor.commands.setContent(stored);
       }
     }
   }, [activeFileId, editor]);
@@ -86,7 +86,7 @@ export const RichTextEditor: React.FC = () => {
             </div>
             <div>
               <h1 className="text-xl font-semibold text-foreground">Welcome to ThesisFlow</h1>
-              <p className="text-sm text-muted">Write your thesis. No LaTeX required.</p>
+              <p className="text-sm text-muted-foreground">Write your thesis. No LaTeX required.</p>
             </div>
           </div>
 
@@ -104,7 +104,7 @@ export const RichTextEditor: React.FC = () => {
                 </span>
                 <div>
                   <p className="text-sm font-medium text-foreground">{title}</p>
-                  <p className="text-xs text-muted mt-0.5">{desc}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{desc}</p>
                 </div>
               </div>
             ))}

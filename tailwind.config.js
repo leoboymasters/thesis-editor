@@ -7,6 +7,16 @@ export default {
   ],
   theme: {
   	extend: {
+  		keyframes: {
+  			'cell-ripple': {
+  				'0%': { transform: 'scale(0.92)', opacity: '0.4' },
+  				'50%': { opacity: '0.85' },
+  				'100%': { transform: 'scale(1)', opacity: '0.4' },
+  			},
+  		},
+  		animation: {
+  			'cell-ripple': 'cell-ripple var(--duration, 400ms) ease-out var(--delay, 0ms) forwards',
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

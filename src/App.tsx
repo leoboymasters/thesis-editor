@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sidebar } from './components/Layout/Sidebar';
 import { TopBar } from './components/Layout/TopBar';
 import { SettingsModal } from './components/Layout/SettingsModal';
@@ -10,10 +10,12 @@ import { CitationModal } from './components/Citations/CitationModal';
 import { useProjectStore } from './store/projectStore';
 import { useAuthStore } from './store/authStore';
 import { AuthScreen } from './components/Auth/AuthScreen';
+import { LandingPage } from './components/Landing/LandingPage';
 import { Loader2 } from 'lucide-react';
 
 const App = () => {
-  const { sidebarVisible, previewVisible, theme, editorMode, templatePickerOpen, toggleTemplatePicker, citationModalOpen, toggleCitationModal } = useProjectStore();
+  const [showAuthScreen, setShowAuthScreen] = useState(false);
+  const { sidebarVisible, previewVisible, theme, editorMode } = useProjectStore();
   const { user, profile, loading, error: authError } = useAuthStore();
   
   const renderEditor = () => (
@@ -44,8 +46,8 @@ const App = () => {
         <div><span>{theme === 'dark' ? 'Tokyo Night' : 'Tokyo Night Light'}</span></div>
       </footer>
       <SettingsModal />
-      {templatePickerOpen && <TemplatePickerModal onClose={toggleTemplatePicker} />}
-      {citationModalOpen && <CitationModal onClose={toggleCitationModal} />}
+      <TemplatePickerModal />
+      <CitationModal />
     </div>
   );
 
@@ -58,24 +60,32 @@ const App = () => {
   // 2. Initial Setup: If we are still loading and don't have user/profile yet, show loader.
   if (loading) {
     return (
-      <div className="h-screen w-screen flex flex-col items-center justify-center bg-[#0f172a] text-white">
-        <Loader2 className="w-10 h-10 animate-spin text-blue-500 mb-4" />
-        <p className="text-slate-400 animate-pulse">Initializing session...</p>
+      <div className="h-screen w-screen flex flex-col items-center justify-center bg-white text-slate-900">
+        <Loader2 className="w-10 h-10 animate-spin text-primary mb-4" />
+        <p className="text-slate-500 animate-pulse">Initializing session...</p>
       </div>
     );
   }
 
-  // 3. No User: If we are not loading and have no user, show login.
+  // 3. No User: Show landing first; "Login" / "Request Demo" show auth.
   if (!user) {
-    return <AuthScreen />;
+    if (showAuthScreen) {
+      return <AuthScreen onBack={() => setShowAuthScreen(false)} />;
+    }
+    return (
+      <LandingPage
+        onLogin={() => setShowAuthScreen(true)}
+        onRequestDemo={() => setShowAuthScreen(true)}
+      />
+    );
   }
 
   // 4. Missing Profile: If user exists but profile is missing (and no error yet), wait.
   if (!profile && !authError) {
     return (
-      <div className="h-screen w-screen flex flex-col items-center justify-center bg-[#0f172a] text-white">
-        <Loader2 className="w-10 h-10 animate-spin text-blue-500 mb-4" />
-        <p className="text-slate-400">Loading your profile...</p>
+      <div className="h-screen w-screen flex flex-col items-center justify-center bg-white text-slate-900">
+        <Loader2 className="w-10 h-10 animate-spin text-primary mb-4" />
+        <p className="text-slate-500">Loading your profile...</p>
       </div>
     );
   }

@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ThesisFlow</title>
+    <title>researchere — Don't research there. Research here.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Outfit', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
             },
             colors: {
@@ -23,9 +23,13 @@
               muted: "var(--fg-secondary)",
               border: "var(--border)",
               primary: {
-                DEFAULT: "var(--accent)",
+                DEFAULT: "#00ac8c", /* Persian Green */
                 foreground: "#ffffff",
               },
+              accent: {
+                DEFAULT: "var(--accent)", /* Neutral Slate Light */
+                foreground: "var(--accent-foreground)",
+              }
             }
           },
         },

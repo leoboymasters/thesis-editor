@@ -1,13 +1,36 @@
 import React, { useState } from 'react';
-import { X, Search, Loader2 } from 'lucide-react';
+import { Search, Loader2 } from 'lucide-react';
 import { lookupDoi, formatBibtexEntry, CitationMeta } from '../../lib/doiLookup';
 import { useProjectStore } from '../../store/projectStore';
 import { FileSystemItem } from '../../types';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '../ui/dialog';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { Alert, AlertDescription } from '../ui/alert';
 
-interface Props { onClose: () => void; }
+const TYPE_OPTIONS = [
+  { value: 'article', label: 'Article' },
+  { value: 'inproceedings', label: 'Conference Paper' },
+  { value: 'book', label: 'Book' },
+  { value: 'misc', label: 'Miscellaneous' },
+] as const;
 
-export const CitationModal: React.FC<Props> = ({ onClose }) => {
-  const { files, updateFileContent } = useProjectStore();
+export const CitationModal: React.FC = () => {
+  const { citationModalOpen, toggleCitationModal, files, updateFileContent } = useProjectStore();
   const [doi, setDoi] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +53,6 @@ export const CitationModal: React.FC<Props> = ({ onClose }) => {
   };
 
   const handleInsert = () => {
-    // Find the references.bib file
     const bibFile = Object.values(files).find(
       (f: FileSystemItem) => f.type === 'file' && f.name === 'references.bib'
     );
@@ -42,67 +64,75 @@ export const CitationModal: React.FC<Props> = ({ onClose }) => {
     const currentContent = bibFile.content ?? '';
     const newContent = currentContent ? `${currentContent}\n\n${entry}` : entry;
     updateFileContent(bibFile.id, newContent);
-    onClose();
+    toggleCitationModal();
   };
 
   const field = (label: string, key: keyof CitationMeta, placeholder = '') => (
-    <div>
-      <label className="block text-xs text-muted mb-1">{label}</label>
-      <input
+    <div className="space-y-2">
+      <Label className="text-xs">{label}</Label>
+      <Input
         value={meta[key] ?? ''}
         onChange={e => setMeta(prev => ({ ...prev, [key]: e.target.value }))}
         placeholder={placeholder}
-        className="w-full px-3 py-1.5 text-sm bg-surface border border-border rounded-lg text-foreground placeholder:text-muted focus:outline-none focus:border-primary"
+        className="h-9"
       />
     </div>
   );
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-panel border border-border rounded-xl w-[540px] max-h-[85vh] overflow-hidden shadow-2xl flex flex-col">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-          <h2 className="text-lg font-semibold text-foreground">Add Citation</h2>
-          <button onClick={onClose} className="text-muted hover:text-foreground"><X className="w-5 h-5" /></button>
-        </div>
+    <Dialog open={citationModalOpen} onOpenChange={(open) => !open && toggleCitationModal()}>
+      <DialogContent className="bg-panel border-border p-0 gap-0 w-[540px] max-w-[95vw] max-h-[85vh] flex flex-col">
+        <DialogHeader className="px-6 py-4 border-b border-border">
+          <DialogTitle>Add Citation</DialogTitle>
+        </DialogHeader>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
-          {/* DOI Lookup */}
-          <div>
-            <label className="block text-xs text-muted mb-1">DOI Lookup</label>
+          <div className="space-y-2">
+            <Label className="text-xs">DOI Lookup</Label>
             <div className="flex gap-2">
-              <input
+              <Input
                 value={doi}
                 onChange={e => setDoi(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleLookup()}
                 placeholder="10.1234/example or https://doi.org/..."
-                className="flex-1 px-3 py-1.5 text-sm bg-surface border border-border rounded-lg text-foreground placeholder:text-muted focus:outline-none focus:border-primary"
+                className="flex-1 h-9"
               />
-              <button
+              <Button
                 onClick={handleLookup}
                 disabled={loading || !doi.trim()}
-                className="px-4 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50 flex items-center gap-1.5"
+                size="sm"
+                className="gap-1.5"
               >
                 {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Search className="w-3.5 h-3.5" />}
                 Lookup
-              </button>
+              </Button>
             </div>
-            {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
           </div>
+          {error && (
+            <Alert variant="destructive">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
 
           <div className="border-t border-border pt-4 grid grid-cols-2 gap-3">
             {field('Citation Key *', 'key', 'e.g. smith2024')}
-            <div>
-              <label className="block text-xs text-muted mb-1">Type</label>
-              <select
+            <div className="space-y-2">
+              <Label className="text-xs">Type</Label>
+              <Select
                 value={meta.type}
-                onChange={e => setMeta(prev => ({ ...prev, type: e.target.value }))}
-                className="w-full px-3 py-1.5 text-sm bg-surface border border-border rounded-lg text-foreground focus:outline-none focus:border-primary"
+                onValueChange={(value) => setMeta(prev => ({ ...prev, type: value }))}
               >
-                <option value="article">Article</option>
-                <option value="inproceedings">Conference Paper</option>
-                <option value="book">Book</option>
-                <option value="misc">Miscellaneous</option>
-              </select>
+                <SelectTrigger className="h-9">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {TYPE_OPTIONS.map((opt) => (
+                    <SelectItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             {field('Title', 'title')}
             {field('Author(s)', 'author', 'Last, First and Last, First')}
@@ -113,20 +143,16 @@ export const CitationModal: React.FC<Props> = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-border flex justify-between items-center">
-          <p className="text-xs text-muted">Will append to references.bib</p>
+        <DialogFooter className="px-6 py-4 border-t border-border flex justify-between items-center">
+          <p className="text-xs text-muted-foreground">Will append to references.bib</p>
           <div className="flex gap-3">
-            <button onClick={onClose} className="px-4 py-2 text-sm text-muted hover:text-foreground">Cancel</button>
-            <button
-              onClick={handleInsert}
-              disabled={!meta.key.trim()}
-              className="px-5 py-2 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
-            >
+            <Button variant="ghost" onClick={toggleCitationModal}>Cancel</Button>
+            <Button onClick={handleInsert} disabled={!meta.key.trim()}>
               Insert Citation
-            </button>
+            </Button>
           </div>
-        </div>
-      </div>
-    </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
