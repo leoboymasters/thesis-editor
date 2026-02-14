@@ -8,32 +8,25 @@ import { PdfViewer } from './components/Preview/PdfViewer';
 import { TemplatePickerModal } from './components/Templates/TemplatePickerModal';
 import { CitationModal } from './components/Citations/CitationModal';
 import { useProjectStore } from './store/projectStore';
+import { useAuthStore } from './store/authStore';
+import { AuthScreen } from './components/Auth/AuthScreen';
+import { Loader2 } from 'lucide-react';
 
 const App = () => {
   const { sidebarVisible, previewVisible, theme, editorMode, templatePickerOpen, toggleTemplatePicker, citationModalOpen, toggleCitationModal } = useProjectStore();
-
-  return (
+  const { user, profile, loading, error: authError } = useAuthStore();
+  
+  const renderEditor = () => (
     <div className={`${theme} flex flex-col h-screen w-screen bg-background text-foreground overflow-hidden`}>
       <TopBar />
-
       <main className="flex-1 flex overflow-hidden">
-        {/* Sidebar */}
-        <div
-          className={`
-            shrink-0 transition-all duration-300 ease-in-out border-r border-border bg-panel
-            ${sidebarVisible ? 'w-64 translate-x-0' : 'w-0 -translate-x-full opacity-0 overflow-hidden border-none'}
-          `}
-        >
+        <div className={`shrink-0 transition-all duration-300 ease-in-out border-r border-border bg-panel ${sidebarVisible ? 'w-64 translate-x-0' : 'w-0 -translate-x-full opacity-0 overflow-hidden border-none'}`}>
           <Sidebar />
         </div>
-
-        {/* Main Editor Area */}
         <div className="flex-1 flex min-w-0 bg-background">
           <div className="flex-1 flex flex-col min-w-0">
             {editorMode === 'rich' ? <RichTextEditor /> : <CodeEditor />}
           </div>
-
-          {/* Preview Split */}
           {previewVisible && (
             <div className="w-[45%] border-l border-border shrink-0 bg-background">
               <PdfViewer />
@@ -41,8 +34,6 @@ const App = () => {
           )}
         </div>
       </main>
-
-      {/* Footer / Status Bar */}
       <footer className="h-6 bg-primary text-white text-[10px] px-3 flex items-center justify-between shrink-0">
         <div className="flex gap-4">
           <span>Ready</span>
@@ -50,21 +41,52 @@ const App = () => {
           <span>UTF-8</span>
           <span>LaTeX</span>
         </div>
-        <div>
-          <span>{theme === 'dark' ? 'Tokyo Night' : 'Tokyo Night Light'}</span>
-        </div>
+        <div><span>{theme === 'dark' ? 'Tokyo Night' : 'Tokyo Night Light'}</span></div>
       </footer>
-
-      {/* Settings Modal */}
       <SettingsModal />
-
-      {/* Template Picker Modal */}
       {templatePickerOpen && <TemplatePickerModal onClose={toggleTemplatePicker} />}
-
-      {/* Citation Modal */}
       {citationModalOpen && <CitationModal onClose={toggleCitationModal} />}
     </div>
   );
+
+  // 1. Instant Load: If we have both cached/synced user and profile, show the editor.
+  // We do NOT wait for 'loading' to finish here.
+  if (user && profile) {
+    return renderEditor();
+  }
+
+  // 2. Initial Setup: If we are still loading and don't have user/profile yet, show loader.
+  if (loading) {
+    return (
+      <div className="h-screen w-screen flex flex-col items-center justify-center bg-[#0f172a] text-white">
+        <Loader2 className="w-10 h-10 animate-spin text-blue-500 mb-4" />
+        <p className="text-slate-400 animate-pulse">Initializing session...</p>
+      </div>
+    );
+  }
+
+  // 3. No User: If we are not loading and have no user, show login.
+  if (!user) {
+    return <AuthScreen />;
+  }
+
+  // 4. Missing Profile: If user exists but profile is missing (and no error yet), wait.
+  if (!profile && !authError) {
+    return (
+      <div className="h-screen w-screen flex flex-col items-center justify-center bg-[#0f172a] text-white">
+        <Loader2 className="w-10 h-10 animate-spin text-blue-500 mb-4" />
+        <p className="text-slate-400">Loading your profile...</p>
+      </div>
+    );
+  }
+
+  // 5. Fatal Profile Error: If we have a user but sync failed definitively.
+  if (!profile && authError) {
+    return <AuthScreen />;
+  }
+
+  // Fallback (should be covered by renderEditor above but for TS safety)
+  return renderEditor();
 };
 
 export default App;

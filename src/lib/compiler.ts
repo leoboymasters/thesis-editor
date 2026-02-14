@@ -52,7 +52,12 @@ const resolvePath = (itemId: string, files: Record<string, FileSystemItem>): str
 
 // Clear caches
 export const clearPathCache = () => pathCache.clear();
-export const clearCompilationCache = () => compilationCache.clear();
+export const clearCompilationCache = () => {
+  for (const cached of compilationCache.values()) {
+    URL.revokeObjectURL(cached.url);
+  }
+  compilationCache.clear();
+};
 
 // Find main .tex file with \documentclass
 const findMainTexFile = (files: Record<string, FileSystemItem>): { path: string; content: string; id: string } | null => {
@@ -187,58 +192,42 @@ const generateTocFile = (
   let pageNum = 1; // Approximate page numbering
 
   // Helper to process a file's content for TOC entries
-  const processContent = (content: string, basePath: string = '') => {
-    const lines = content.split('\n');
+  const processContent = (content: string, _basePath: string = '') => {
+    // Remove comments
+    const cleanContent = content.replace(/%.*$/gm, '');
 
-    for (const line of lines) {
-      // Skip comments
-      if (line.trim().startsWith('%')) continue;
-
-      // Check for \input or \include to process referenced files
-      const inputMatch = line.match(/\\(input|include)\{([^}]+)\}/);
-      if (inputMatch) {
-        let ref = inputMatch[2].trim();
+    // 1. Process nested files
+    const inputMatches = [...cleanContent.matchAll(/\\(input|include)\{([^}]+)\}/g)];
+    for (const match of inputMatches) {
+        let ref = match[2].trim();
         if (!ref.endsWith('.tex')) ref += '.tex';
-        // Note: We don't want to modify ref based on basePath for root-level includes
-        // The ref in main file is already relative to root (e.g., chapters/chapter1.tex)
         const file = pathToFile.get(ref) || pathToFile.get(ref.split('/').pop() || '');
         if (file?.content) {
           processContent(file.content, ref);
         }
-        continue;
-      }
+    }
 
-      // Check for chapter
-      const chapterMatch = line.match(/\\chapter\{([^}]+)\}/);
-      if (chapterMatch) {
-        chapterNum++;
-        sectionNum = 0;
-        subsectionNum = 0;
-        pageNum += 2; // Rough estimate
-        const title = chapterMatch[1];
-        tocEntries.push(`\\contentsline {chapter}{\\numberline {${chapterNum}}${title}}{${pageNum}}{chapter.${chapterNum}}`);
-        continue;
-      }
+    // 2. Extract headings (handling multi-line)
+    const headingMatches = [...cleanContent.matchAll(/\\(chapter|section|subsection)\*?\{([\s\S]*?)\}/g)];
+    for (const match of headingMatches) {
+        const type = match[1];
+        const title = match[2].trim().replace(/\s+/g, ' ');
 
-      // Check for section (not starred)
-      const sectionMatch = line.match(/\\section\{([^}]+)\}/);
-      if (sectionMatch) {
-        sectionNum++;
-        subsectionNum = 0;
-        pageNum++;
-        const title = sectionMatch[1];
-        tocEntries.push(`\\contentsline {section}{\\numberline {${chapterNum}.${sectionNum}}${title}}{${pageNum}}{section.${chapterNum}.${sectionNum}}`);
-        continue;
-      }
-
-      // Check for subsection (not starred)
-      const subsectionMatch = line.match(/\\subsection\{([^}]+)\}/);
-      if (subsectionMatch) {
-        subsectionNum++;
-        const title = subsectionMatch[1];
-        tocEntries.push(`\\contentsline {subsection}{\\numberline {${chapterNum}.${sectionNum}.${subsectionNum}}${title}}{${pageNum}}{subsection.${chapterNum}.${sectionNum}.${subsectionNum}}`);
-        continue;
-      }
+        if (type === 'chapter') {
+            chapterNum++;
+            sectionNum = 0;
+            subsectionNum = 0;
+            pageNum += 2;
+            tocEntries.push(`\\contentsline {chapter}{\\numberline {${chapterNum}}${title}}{${pageNum}}{chapter.${chapterNum}}`);
+        } else if (type === 'section') {
+            sectionNum++;
+            subsectionNum = 0;
+            pageNum++;
+            tocEntries.push(`\\contentsline {section}{\\numberline {${chapterNum}.${sectionNum}}${title}}{${pageNum}}{section.${chapterNum}.${sectionNum}}`);
+        } else if (type === 'subsection') {
+            subsectionNum++;
+            tocEntries.push(`\\contentsline {subsection}{\\numberline {${chapterNum}.${sectionNum}.${subsectionNum}}${title}}{${pageNum}}{subsection.${chapterNum}.${sectionNum}.${subsectionNum}}`);
+        }
     }
   };
 
@@ -741,6 +730,13 @@ export const compileProject = async (
 
   onProgress?.(`Compiling ${resources.length} files...`);
 
+  const contentHash = hashContent(
+    Object.values(files)
+      .filter(f => f.type === 'file')
+      .map(f => f.content || '')
+      .join('|')
+  );
+
   // Compile with pdflatex using selected mode
   try {
     let pdfBlob: Blob;
@@ -757,12 +753,6 @@ export const compileProject = async (
 
     // Cache the result (only for full mode)
     if (!draftMode) {
-      const contentHash = hashContent(
-        Object.values(files)
-          .filter(f => f.type === 'file')
-          .map(f => f.content || '')
-          .join('|')
-      );
       compilationCache.set(contentHash, { url: pdfUrl, timestamp: Date.now() });
     }
 

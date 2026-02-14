@@ -46,6 +46,33 @@ export default defineConfig(({ mode }) => {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('src/data/constants.ts')) {
+              return 'data-constants';
+            }
+            if (id.includes('node_modules')) {
+              if (id.includes('@tiptap') || id.includes('prosemirror')) {
+                return 'vendor-tiptap';
+              }
+              if (id.includes('monaco-editor')) {
+                return 'vendor-monaco';
+              }
+              if (id.includes('@supabase')) {
+                return 'vendor-supabase';
+              }
+              if (id.includes('lucide-react') || id.includes('@radix-ui')) {
+                return 'vendor-ui';
+              }
+              return 'vendor';
+            }
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1500,
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

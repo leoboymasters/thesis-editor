@@ -70,6 +70,11 @@ export const parseProjectStructure = (
 
     const processedFiles = new Set<string>();
 
+    // Helper to calculate line number from index
+    const getLineNumber = (content: string, index: number) => {
+        return content.substring(0, index).split('\n').length;
+    };
+
     // Recursive parser
     const parseFile = (fileId: string) => {
         if (processedFiles.has(fileId)) return;
@@ -78,93 +83,62 @@ export const parseProjectStructure = (
         const file = files[fileId];
         if (!file || !file.content) return;
 
-        const lines = file.content.split('\n');
+        const content = file.content;
+        
+        // Remove comments for parsing but keep indices relative to original content
+        // Actually, replacing comments with spaces of same length preserves indices
+        const cleanContent = content.replace(/%.*$/gm, (match) => ' '.repeat(match.length));
 
-        // We scan line by line to get line numbers easily
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i];
-            const lineNum = i + 1;
+        // 1. Check for Sections/Chapters (Multi-line supported via [\s\S]*?)
+        const sectionRegex = /\\(chapter|section|subsection)\*?\{([\s\S]*?)\}/g;
+        let match;
+        while ((match = sectionRegex.exec(cleanContent)) !== null) {
+            const level = match[1] as 'chapter' | 'section' | 'subsection';
+            const title = match[2].trim().replace(/\s+/g, ' ');
+            const lineNumber = getLineNumber(content, match.index);
 
-            // 1. Check for Sections/Chapters
-            // We manually check regex against line to verify it's not commented out
-            if (!line.trim().startsWith('%')) {
-                let match;
+            result.toc.push({
+                id: `${fileId}-${match.index}`,
+                type: level,
+                title,
+                fileId,
+                lineNumber,
+            });
+        }
 
-                // Reset lastIndex for global regexes is tricky if re-using, 
-                // but here we instantiate new RegExp or use matchAll if complex.
-                // Simple scan:
-                const sectionMatch = line.match(/\\(chapter|section|subsection)\*?\{([^}]+)\}/);
-                if (sectionMatch) {
-                    const level = sectionMatch[1] as 'chapter' | 'section' | 'subsection';
-                    const title = sectionMatch[2];
-                    result.toc.push({
-                        id: `${fileId}-${lineNum}`,
-                        type: level,
-                        title,
-                        fileId,
-                        lineNumber: lineNum,
-                    });
-                }
+        // 2. Check for Figures/Tables
+        const envRegex = /\\begin\{(figure|table)\}([\s\S]*?)\\end\{\1\}/g;
+        while ((match = envRegex.exec(cleanContent)) !== null) {
+            const type = match[1] as 'figure' | 'table';
+            const body = match[2];
+            const startLine = getLineNumber(content, match.index);
+            
+            // Find caption within environment
+            const capMatch = body.match(/\\caption\{([\s\S]*?)\}/);
+            const caption = capMatch ? capMatch[1].trim().replace(/\s+/g, ' ') : `Untitled ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            const captionLine = capMatch 
+                ? getLineNumber(content, match.index + (capMatch.index ?? 0) + '\\begin{figure}'.length) // Approximation
+                : startLine;
 
-                // 2. Check for Figures/Tables
-                // Note: Figures often span multiple lines. We detect \begin{figure} 
-                // and look ahead for \caption.
-                if (line.includes('\\begin{figure}')) {
-                    // fast-forward to find caption in subsequent lines
-                    let caption = 'Untitled Figure';
-                    let captionLine = lineNum;
+            const item: StructureItem = {
+                id: `${fileId}-${match.index}`,
+                type: type,
+                title: caption,
+                fileId,
+                lineNumber: captionLine,
+            };
 
-                    for (let j = i; j < Math.min(i + 20, lines.length); j++) {
-                        const capMatch = lines[j].match(/\\caption\{([^}]+)\}/);
-                        if (capMatch) {
-                            caption = capMatch[1];
-                            captionLine = j + 1;
-                            break;
-                        }
-                        if (lines[j].includes('\\end{figure}')) break;
-                    }
+            if (type === 'figure') result.figures.push(item);
+            else result.tables.push(item);
+        }
 
-                    result.figures.push({
-                        id: `${fileId}-${lineNum}`,
-                        type: 'figure',
-                        title: caption,
-                        fileId,
-                        lineNumber: captionLine, // Navigate to caption ideally
-                    });
-                }
-
-                if (line.includes('\\begin{table}')) {
-                    let caption = 'Untitled Table';
-                    let captionLine = lineNum;
-
-                    for (let j = i; j < Math.min(i + 20, lines.length); j++) {
-                        const capMatch = lines[j].match(/\\caption\{([^}]+)\}/);
-                        if (capMatch) {
-                            caption = capMatch[1];
-                            captionLine = j + 1;
-                            break;
-                        }
-                        if (lines[j].includes('\\end{table}')) break;
-                    }
-
-                    result.tables.push({
-                        id: `${fileId}-${lineNum}`,
-                        type: 'table',
-                        title: caption,
-                        fileId,
-                        lineNumber: captionLine,
-                    });
-                }
-
-                // 3. Handle Inputs/Includes to parse recursively
-                const inputMatch = line.match(/\\(input|include)\{([^}]+)\}/);
-                if (inputMatch) {
-                    const refPath = inputMatch[2];
-                    const refId = resolveFileId(refPath, fileId, files);
-                    if (refId) {
-                        parseFile(refId);
-                    }
-                }
+        // 3. Handle Inputs/Includes
+        const inputRegex = /\\(input|include)\{([^}]+)\}/g;
+        while ((match = inputRegex.exec(cleanContent)) !== null) {
+            const refPath = match[2].trim();
+            const refId = resolveFileId(refPath, fileId, files);
+            if (refId) {
+                parseFile(refId);
             }
         }
     };
@@ -172,9 +146,10 @@ export const parseProjectStructure = (
     if (rootFileId) {
         parseFile(rootFileId);
     } else {
-        // If no root, try to parse all tex files (structure might be messy but better than nothing)
-        // Or just pick 'thesis-tex' if available (default in store)
-        const defaultRoot = Object.values(files).find(f => f.name === 'thesis.tex' || f.name === 'main.tex');
+        const defaultRoot = Object.values(files).find(f => 
+            f.name.toLowerCase() === 'thesis.tex' || 
+            f.name.toLowerCase() === 'main.tex'
+        );
         if (defaultRoot) parseFile(defaultRoot.id);
     }
 

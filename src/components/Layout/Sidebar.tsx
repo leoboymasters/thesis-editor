@@ -17,7 +17,7 @@ const FileIcon = ({ name }: { name: string }) => {
   if (name.endsWith('.tex')) return <FileText className="w-4 h-4 text-blue-500" />;
   if (name.endsWith('.bib')) return <FileText className="w-4 h-4 text-green-600" />;
   if (name.endsWith('.png') || name.endsWith('.jpg')) return <ImageIcon className="w-4 h-4 text-purple-500" />;
-  return <FileText className="w-4 h-4 text-muted" />;
+  return <FileText className="w-4 h-4 text-muted-foreground" />;
 };
 
 const FileTreeItem: React.FC<{ item: FileSystemItem, depth?: number }> = ({ item, depth = 0 }) => {
@@ -50,14 +50,14 @@ const FileTreeItem: React.FC<{ item: FileSystemItem, depth?: number }> = ({ item
         className={`
           flex items-center gap-2 py-1.5 pr-2 cursor-pointer select-none text-sm
           hover:bg-surface
-          ${isActive ? 'bg-surface text-primary font-medium' : 'text-muted'}
+          ${isActive ? 'bg-surface text-primary font-medium' : 'text-muted-foreground'}
         `}
         style={{ paddingLeft: depth === 0 ? '1rem' : paddingLeft }}
         onClick={handleClick}
       >
         <div className="flex items-center gap-1 shrink-0">
           {item.type === 'folder' && (
-            <span className="text-muted/60">
+            <span className="text-muted-foreground/60">
               {item.isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
             </span>
           )}
@@ -119,12 +119,12 @@ export const Sidebar = () => {
         <div className="flex gap-1">
           <button
             onClick={handleUploadClick}
-            className="p-1 hover:bg-surface rounded text-muted"
+            className="p-1 hover:bg-surface rounded text-muted-foreground"
             title="Import ZIP Project"
           >
             <Upload size={14} />
           </button>
-          <button className="p-1 hover:bg-surface rounded text-muted" title="Add File">
+          <button className="p-1 hover:bg-surface rounded text-muted-foreground" title="Add File">
             <Plus size={14} />
           </button>
           <input
@@ -143,7 +143,7 @@ export const Sidebar = () => {
         ))}
       </div>
 
-      <div className="p-4 border-t border-border text-xs text-muted">
+      <div className="p-4 border-t border-border text-xs text-muted-foreground">
         Thesis Project v1.0
       </div>
     </div>

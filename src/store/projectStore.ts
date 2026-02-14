@@ -186,6 +186,12 @@ export const useProjectStore = create<ProjectStore>()(
         onProgress: (msg) => set({ compileProgress: msg })
       });
 
+      // Revoke previous URL if it's different to avoid memory leaks
+      const prevResult = get().compilationResult;
+      if (prevResult?.success && prevResult.pdfUrl && prevResult.pdfUrl !== pdfUrl) {
+        URL.revokeObjectURL(prevResult.pdfUrl);
+      }
+
       set({
         isCompiling: false,
         compileProgress: null,

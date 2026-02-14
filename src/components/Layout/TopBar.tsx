@@ -1,9 +1,12 @@
 import React from 'react';
 import { Play, Settings, PanelLeftClose, PanelLeft, MonitorPlay, Sun, Moon, Zap, Image, RefreshCw, Code2, Type, Plus, BookMarked, Download } from 'lucide-react';
 import { useProjectStore } from '../../store/projectStore';
+import { useAuthStore } from '../../store/authStore';
 import { exportProjectZip } from '../../lib/exportZip';
+import { LogOut, User as UserIcon } from 'lucide-react';
 
 export const TopBar = () => {
+  const { user, signOut } = useAuthStore();
   const {
     startCompilation,
     isCompiling,
@@ -35,14 +38,14 @@ export const TopBar = () => {
           <div className="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
             <span className="font-serif font-bold italic">Tx</span>
           </div>
-          <span>Thesis<span className="font-light text-muted">Editor</span></span>
+          <span>Thesis<span className="font-light text-muted-foreground">Editor</span></span>
         </div>
 
         <div className="h-6 w-px bg-border mx-2"></div>
 
         <button
           onClick={toggleSidebar}
-          className={`p-2 rounded-md ${!sidebarVisible ? 'bg-surface text-foreground' : 'text-muted hover:bg-surface'}`}
+          className={`p-2 rounded-md ${!sidebarVisible ? 'bg-surface text-foreground' : 'text-muted-foreground hover:bg-surface'}`}
           title="Toggle Sidebar"
         >
           {sidebarVisible ? <PanelLeftClose size={18} /> : <PanelLeft size={18} />}
@@ -50,7 +53,7 @@ export const TopBar = () => {
 
         <button
           onClick={toggleTemplatePicker}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted hover:bg-surface hover:text-foreground transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-surface hover:text-foreground transition-colors"
           title="New Project from Template"
         >
           <Plus size={14} />
@@ -59,7 +62,7 @@ export const TopBar = () => {
 
         <button
           onClick={toggleCitationModal}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted hover:bg-surface hover:text-foreground transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-surface hover:text-foreground transition-colors"
           title="Add Citation"
         >
           <BookMarked size={14} />
@@ -69,7 +72,7 @@ export const TopBar = () => {
 
       <div className="flex items-center gap-3">
         {/* Status indicator */}
-        <div className="text-xs text-muted mr-4 hidden md:block">
+        <div className="text-xs text-muted-foreground mr-4 hidden md:block">
           {isCompiling && compileProgress ? (
             <span className="text-primary font-medium animate-pulse">{compileProgress}</span>
           ) : (
@@ -106,7 +109,7 @@ export const TopBar = () => {
 
         <button
           onClick={toggleTheme}
-          className="p-2 text-muted hover:bg-surface rounded-md"
+          className="p-2 text-muted-foreground hover:bg-surface rounded-md"
           title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
         >
           {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -145,7 +148,7 @@ export const TopBar = () => {
           className={`
             flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm min-w-[120px] justify-center
             ${isCompiling
-              ? 'bg-surface text-muted cursor-not-allowed'
+              ? 'bg-surface text-muted-foreground cursor-not-allowed'
               : 'bg-primary text-white hover:opacity-90 hover:shadow-md active:scale-95'}
           `}
         >
@@ -165,7 +168,7 @@ export const TopBar = () => {
         {/* Export .zip Button */}
         <button
           onClick={() => exportProjectZip(files)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted hover:bg-surface hover:text-foreground transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:bg-surface hover:text-foreground transition-colors"
           title="Export project as .zip for Overleaf"
         >
           <Download size={14} />
@@ -174,7 +177,7 @@ export const TopBar = () => {
 
         <button
           onClick={togglePreview}
-          className={`p-2 rounded-md ${!previewVisible ? 'text-muted' : 'text-primary bg-surface'}`}
+          className={`p-2 rounded-md ${!previewVisible ? 'text-muted-foreground' : 'text-primary bg-surface'}`}
           title="Toggle Preview"
         >
           <MonitorPlay size={18} />
@@ -182,7 +185,7 @@ export const TopBar = () => {
 
         <button
           onClick={toggleSettings}
-          className="p-2 text-muted hover:bg-surface rounded-md relative"
+          className="p-2 text-muted-foreground hover:bg-surface rounded-md relative"
           title={`Settings (Current: ${compilationMode === 'local' ? 'Local WASM' : 'Cloud API'})`}
         >
           <Settings size={18} />
@@ -194,6 +197,24 @@ export const TopBar = () => {
               : 'bg-emerald-500'}
           `} />
         </button>
+
+        <div className="h-6 w-px bg-border mx-1"></div>
+
+        <div className="flex items-center gap-2 pl-2">
+          <div className="flex flex-col items-end hidden lg:flex">
+            <span className="text-[10px] text-muted-foreground leading-tight">Logged in as</span>
+            <span className="text-xs font-medium text-foreground leading-tight truncate max-w-[120px]">
+              {user?.email?.split('@')[0]}
+            </span>
+          </div>
+          <button
+            onClick={() => signOut()}
+            className="p-2 text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-md transition-colors"
+            title="Sign Out"
+          >
+            <LogOut size={18} />
+          </button>
+        </div>
       </div>
     </header>
   );

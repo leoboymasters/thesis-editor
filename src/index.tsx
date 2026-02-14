@@ -5,6 +5,8 @@ import App from './App';
 import { loadFiles } from './lib/persistence';
 import { useProjectStore } from './store/projectStore';
 
+import { AuthProvider } from './components/Auth/AuthProvider';
+
 const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");
@@ -24,7 +26,9 @@ const bootstrap = async () => {
 bootstrap().then(() => {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </React.StrictMode>
   );
 });
